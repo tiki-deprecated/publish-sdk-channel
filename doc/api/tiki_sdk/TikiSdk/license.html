@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the license method from the TikiSdk class, for the Dart programming language.">
+  <title>license method - TikiSdk class - tiki_sdk library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">tiki_sdk_platform_channel</a></li>
+    <li><a href="../../tiki_sdk/tiki_sdk-library.html">tiki_sdk</a></li>
+    <li><a href="../../tiki_sdk/TikiSdk-class.html">TikiSdk</a></li>
+    <li class="self-crumb">license static method</li>
+  </ol>
+  <div class="self-name">license</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">license</span> static method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a></span>
+<span class="name ">license</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="license-param-ptr"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">ptr</span>, </span></li>
+<li><span class="parameter" id="license-param-uses"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a></span> <span class="parameter-name">uses</span>, </span></li>
+<li><span class="parameter" id="license-param-terms"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">terms</span>, </span></li>
+<li><span class="parameter" id="license-param-tags">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a>?</span> <span class="parameter-name">tags</span> = <span class="default-value">const []</span>, </span></li>
+<li><span class="parameter" id="license-param-titleDescription"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">titleDescription</span>, </span></li>
+<li><span class="parameter" id="license-param-licenseDescription"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">licenseDescription</span>, </span></li>
+<li><span class="parameter" id="license-param-expiry"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">expiry</span>, </span></li>
+<li><span class="parameter" id="license-param-origin"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">origin</span>}</span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Creates a new <code>LicenseRecord</code> object.</p>
+<p>The method searches for a <code>TitleRecord</code> object that matches the provided <code>ptr</code> parameter. If such a record exists, the
+<code>tags</code> and <code>titleDescription</code> parameters are ignored. Otherwise, a new <code>TitleRecord</code> is created using the provided
+<code>tags</code> and <code>titleDescription</code> parameters.</p>
+<p>If the <code>origin</code> parameter is not provided, the default origin specified in initialization is used.
+The <code>expiry</code> parameter sets the expiration date of the <code>LicenseRecord</code>. If the license never expires, leave this parameter
+as <code>null</code>.</p>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>ptr: The pointer record identifies data stored in your system, similar to a foreign key. Learn more about selecting good pointer
+records at <a href="https://docs.mytiki.com/docs/selecting-a-pointer-record">https://docs.mytiki.com/docs/selecting-a-pointer-record</a>.</li>
+<li>uses: A list defining how and where an asset may be used, in the format of <code>LicenseUse</code> objects. Learn more about specifying
+uses at <a href="https://docs.mytiki.com/docs/specifying-terms-and-usage">https://docs.mytiki.com/docs/specifying-terms-and-usage</a>.</li>
+<li>terms: The legal terms of the contract. This is a long text document that explains the terms of the license.</li>
+<li>tags: A list of metadata tags included in the <code>TitleRecord</code> describing the asset, for your use in record search and filtering.
+This parameter is used only if a <code>TitleRecord</code> does not already exist for the provided <code>ptr</code>.</li>
+<li>titleDescription: A short, human-readable description of the <code>TitleRecord</code> as a future reminder. This parameter is used
+only if a <code>TitleRecord</code> does not already exist for the provided <code>ptr</code>.</li>
+<li>licenseDescription: A short, human-readable description of the <code>LicenseRecord</code> as a future reminder.</li>
+<li>expiry: The expiration date of the <code>LicenseRecord</code>. If the license never expires, leave this parameter as <code>null</code>.</li>
+<li>origin: An optional override of the default origin specified in <code>init()</code>. Use a reverse-DNS syntax, e.g. <code>com.myco.myapp</code>.</li>
+</ul>
+</li>
+<li>
+<p>Returns: The created <code>LicenseRecord</code> object.</p>
+</li>
+<li>
+<p>Throws: <code>TikiSdkError</code> if the SDK is not initialized or if there is an error creating or saving the record.</p>
+</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">static Future&lt;LicenseRecord&gt; license(
+    String ptr, List&lt;LicenseUse&gt; uses, String terms,
+    {List&lt;TitleTag&gt;? tags = const [],
+    String? titleDescription,
+    String? licenseDescription,
+    DateTime? expiry,
+    String? origin}) {
+  return instance._core!.license(
+    ptr,
+    uses,
+    terms,
+    titleDescription: titleDescription,
+    licenseDescription: licenseDescription,
+    expiry: expiry,
+    origin: origin,
+  );
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">tiki_sdk_platform_channel</a></li>
+  <li><a href="../../tiki_sdk/tiki_sdk-library.html">tiki_sdk</a></li>
+  <li><a href="../../tiki_sdk/TikiSdk-class.html">TikiSdk</a></li>
+  <li class="self-crumb">license static method</li>
+</ol>
+
+
+    <h5>TikiSdk class</h5>
+    <ol>
+
+
+
+        <li class="section-title">
+          <a href="../../tiki_sdk/TikiSdk-class.html#instance-properties">Properties</a>
+        </li>
+          <li><a href="../../tiki_sdk/TikiSdk/address.html">address</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/id.html">id</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/isInitialized.html">isInitialized</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+        <li class="section-title"><a href="../../tiki_sdk/TikiSdk-class.html#instance-methods">Methods</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/initialize.html">initialize</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+        <li class="section-title inherited"><a href="../../tiki_sdk/TikiSdk-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+        <li class="section-title"><a href="../../tiki_sdk/TikiSdk-class.html#static-properties">Static properties</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/instance.html">instance</a></li>
+
+        <li class="section-title"><a href="../../tiki_sdk/TikiSdk-class.html#static-methods">Static methods</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/all.html">all</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/config.html">config</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/getLicense.html">getLicense</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/getTitle.html">getTitle</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/guard.html">guard</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/latest.html">latest</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/license.html">license</a></li>
+          <li><a href="../../tiki_sdk/TikiSdk/title.html">title</a></li>
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    tiki_sdk_platform_channel
+      1.0.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

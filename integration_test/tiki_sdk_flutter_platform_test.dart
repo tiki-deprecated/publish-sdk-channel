@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tiki_sdk_platform_channel/src/platform_channel/platform_channel.dart';
 
 import 'package:uuid/uuid.dart';
@@ -38,7 +39,7 @@ void main() {
       await channel.invokeMockMethod('build', {
         "requestId": requestId,
         "request": jsonEncode(
-            {"id": id, "publishingId": publishingId, "origin": origin})
+            {"id": id, "publishingId": publishingId, "origin": origin, "dbDir": await _dbDir()})
       });
       String jsonResponse = await completer.future;
       expect(jsonDecode(jsonResponse)["address"].length > 32, true);
@@ -51,7 +52,7 @@ void main() {
       await channel.invokeMockMethod('build', {
         "requestId": requestId,
         "request": jsonEncode(
-            {"id": id, "publishingId": publishingId, "origin": origin})
+            {"id": id, "publishingId": publishingId, "origin": origin, "dbDir": await _dbDir()})
       });
       await completer.future;
       completer = Completer();
@@ -87,7 +88,7 @@ void main() {
       await channel.invokeMockMethod('build', {
         "requestId": requestId,
         "request": jsonEncode(
-            {"id": id, "publishingId": publishingId, "origin": origin})
+            {"id": id, "publishingId": publishingId, "origin": origin, "dbDir": await _dbDir()})
       });
       await completer.future;
       completer = Completer();
@@ -122,6 +123,14 @@ void main() {
       expect(jsonDecode(jsonResponse)["success"], true);
     });
   });
+}
+
+Future<String> _dbDir() async {
+  final dir = await getApplicationDocumentsDirectory();
+  if (!await dir.exists()) {
+    await dir.create(recursive: true);
+  }
+  return dir.path;
 }
 
 extension MethodChannelMock on MethodChannel {

@@ -90,7 +90,7 @@ class PlatformChannel {
   }
 
   Future<RspInit> _init(ReqInit req) async {
-    await TikiSdk.config().initialize(req.publishingId, req.id, req.origin);
+    await TikiSdk.config().initialize(req.publishingId, req.id, req.origin, req.dbDir);
     return RspInit(address: TikiSdk.instance.address);
   }
 

@@ -1,6 +1,6 @@
 name: tiki_sdk_platform_channel
 description: A package for adding TIKI's decentralized infrastructure to native libraries through Flutter Platform Channels
-version: 0.0.1
+version: 1.0.0
 homepage: https://mytiki.com
 documentation: https://docs.mytiki.com/docs
 repository: https://github.com/tiki/tiki-sdk-platform-channel
@@ -14,7 +14,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_secure_storage: ^8.0.0
-  path_provider: ^2.0.13
   sqlite3: ^1.9.3
   uuid: ^3.0.7
   sqlite3_flutter_libs: ^0.5.13
@@ -26,6 +25,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.1
+  path_provider: ^2.0.14
 
 flutter:
   module:

@@ -4,7 +4,6 @@
  */
 library tiki_sdk;
 
-import 'package:path_provider/path_provider.dart';
 import 'package:sqlite3/common.dart';
 import 'package:sqlite3/sqlite3.dart';
 import 'package:tiki_sdk_dart/tiki_sdk.dart' as core;
@@ -49,11 +48,10 @@ class TikiSdk {
   ///   - onComplete: An optional closure to be executed once the initialization process is complete.
   ///   - origin: The default *origin* for all transactions. Defaults to `Bundle.main.bundleIdentifier` if *null*.
   /// - Throws: `TikiSdkError` if the initialization process encounters an error.
-  Future<void> initialize(String publishingId, String id, String origin,
-      {String? dbDir}) async {
+  Future<void> initialize(String publishingId, String id, String origin, String dbDir) async {
     FlutterKeyStorage keyStorage = FlutterKeyStorage();
     String address = await core.TikiSdk.withId(id, keyStorage);
-    String dbFile = "${(dbDir ?? await _dbDir())}/$address.db";
+    String dbFile = "$dbDir/$address.db";
     CommonDatabase database = sqlite3.open(dbFile);
     _core =
         await core.TikiSdk.init(publishingId, origin, keyStorage, id, database);
@@ -261,11 +259,4 @@ class TikiSdk {
     return instance._core!.latest(ptr, origin: origin);
   }
 
-  Future<String> _dbDir() async {
-    final dir = await getApplicationDocumentsDirectory();
-    if (!await dir.exists()) {
-      await dir.create(recursive: true);
-    }
-    return dir.path;
-  }
 }

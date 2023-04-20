@@ -13,11 +13,13 @@ class ReqInit {
   late final String publishingId;
   late final String origin;
   late final String id;
+  late final String dbDir;
 
   ReqInit.fromJson(String jsonString) {
     Map map = jsonDecode(jsonString);
     publishingId = map['publishingId']!;
     origin = map['origin']!;
     id = map['id'];
+    dbDir = map['dbDir'];
   }
 }

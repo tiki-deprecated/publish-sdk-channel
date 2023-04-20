@@ -62,6 +62,10 @@ jobs:
         with:
           xcode-version: latest-stable
 
+      - name: 'Remove integration_test dependency'
+        run: |
+          perl -i -p0e 's/  integration_test:\n    sdk: flutter//s' pubspec.yaml
+
       - name: 'Flutter pub get'
         run: |
           flutter pub get
@@ -139,6 +143,10 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+
+      - name: 'Remove integration_test dependency'
+        run: |
+          perl -i -p0e 's/  integration_test:\n    sdk: flutter//s' pubspec.yaml
 
       - name: 'Flutter Pub Get'
         run: |

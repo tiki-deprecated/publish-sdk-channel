@@ -146,9 +146,11 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: 'Remove integration_test dependency'
+      - name: 'Remove unecessary dependencies for native libs'
         run: |
           perl -i -p0e 's/  integration_test:\n    sdk: flutter//s' pubspec.yaml
+          perl -i -p0e 's/  path_provider: \^2\.0\.14//s' pubspec.yaml
+          cat pubspec.yaml
 
       - name: 'Flutter Pub Get'
         run: |

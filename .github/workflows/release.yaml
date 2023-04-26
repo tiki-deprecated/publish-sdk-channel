@@ -66,6 +66,8 @@ jobs:
         run: |
           perl -i -p0e 's/  integration_test:\n    sdk: flutter//s' pubspec.yaml
           perl -i -p0e 's/  path_provider: \^2\.0\.14//s' pubspec.yaml
+          perl -i -p0e 's/  sqlite3_flutter_libs: \^0\.5\.13//s' pubspec.yaml
+          perl -i -p0e 's/  uuid: \^3\.0\.7//s' pubspec.yaml
           cat pubspec.yaml
 
       - name: 'Flutter pub get'
@@ -150,6 +152,7 @@ jobs:
         run: |
           perl -i -p0e 's/  integration_test:\n    sdk: flutter//s' pubspec.yaml
           perl -i -p0e 's/  path_provider: \^2\.0\.14//s' pubspec.yaml
+          perl -i -p0e 's/  uuid: \^3\.0\.7//s' pubspec.yaml
           cat pubspec.yaml
 
       - name: 'Flutter Pub Get'

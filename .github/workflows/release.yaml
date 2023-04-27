@@ -86,16 +86,12 @@ jobs:
       - name: "Zip release frameworks"
         run: |
           cd Frameworks/Release
-          zip -r sqlite3.xcframework.zip sqlite3.xcframework
-          shasum -a 256 sqlite3.xcframework.zip | cut -f1 -d' '>> sqlite3.xcframework.checksum.txt
           zip -r flutter_secure_storage.xcframework.zip flutter_secure_storage.xcframework
           shasum -a 256 flutter_secure_storage.xcframework.zip | cut -f1 -d' '>> flutter_secure_storage.checksum.txt
           zip -r App.xcframework.zip App.xcframework
           shasum -a 256 App.xcframework.zip | cut -f1 -d' '>> App.checksum.txt
           zip -r Flutter.xcframework.zip Flutter.xcframework
           shasum -a 256 Flutter.xcframework.zip | cut -f1 -d' '>> Flutter.checksum.txt
-          zip -r sqlite3_flutter_libs.xcframework.zip sqlite3_flutter_libs.xcframework
-          shasum -a 256 sqlite3_flutter_libs.xcframework.zip | cut -f1 -d' '>> sqlite3_flutter_libs.checksum.txt
           zip -r FlutterPluginRegistrant.xcframework.zip FlutterPluginRegistrant.xcframework
           shasum -a 256 FlutterPluginRegistrant.xcframework.zip | cut -f1 -d' '>> FlutterPluginRegistrant.checksum.txt
 

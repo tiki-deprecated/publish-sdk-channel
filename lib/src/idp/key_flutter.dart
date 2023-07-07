@@ -3,7 +3,6 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-/// Secure storage implementation for [KeyStorage]
 library flutter_key_storage;
 
 import 'dart:math';
@@ -18,10 +17,6 @@ import 'package:pointycastle/random/fortuna_random.dart';
 import 'package:tiki_idp/rsa/rsa_private_key.dart';
 import 'package:tiki_idp/tiki_idp.dart';
 
-/// The Flutter specific implementation of [KeyStorage].
-///
-/// It uses [FlutterSecureStorage] to implement encrypted key-value storage
-/// for Android and iOS.
 class KeyFlutter implements KeyPlatform {
   final FlutterSecureStorage secureStorage = const FlutterSecureStorage();
 

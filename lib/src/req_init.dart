@@ -5,10 +5,6 @@
 
 import 'dart:convert';
 
-/// The request for the `build` method call in the Platform Channel.
-///
-/// It requires an [publishingId] and an [origin]. If no [address] is provided the SDK
-/// will create a new one
 class ReqInit {
   late final String publishingId;
   late final String origin;

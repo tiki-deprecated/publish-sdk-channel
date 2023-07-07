@@ -3,11 +3,6 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-/// Native platform channels for TIKI SDK.
-///
-/// The Flutter Platform Channels are used to call native code from Dart and
-/// vice-versa. In TIKI SDK we use it to call [TikiSdk] methods **from** native code.
-/// It is **not used** in pure Flutter implementations.
 library tiki_sdk_flutter_platform;
 
 import 'dart:async';
@@ -23,7 +18,6 @@ import 'rsp_error.dart';
 import 'trail/trail_handler.dart';
 import 'trail/trail_wrapper.dart';
 
-/// The definition of native platform channels
 class Channel {
   final channel = const MethodChannel('com.mytiki.sdk');
   final IdpWrapper _idp = IdpWrapper();

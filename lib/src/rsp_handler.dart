@@ -20,13 +20,21 @@ class RspHandler {
     try {
       T rsp = await process();
       rsp.requestId = requestId;
-      await _channel.invokeMethod(successMethod, rsp.toJson());
+      await _channel.invokeMethod(successMethod, rsp.toMap());
     } catch (e) {
-      RspError rsp = RspError.fromError(e as Error, requestId: requestId);
-      await _channel.invokeMethod(errorMethod, rsp.toJson());
+      RspError rsp;
+      if (e is Error) {
+        rsp = RspError.fromError(e, requestId: requestId);
+      } else if (e is Exception) {
+        rsp = RspError.fromException(e, requestId: requestId);
+      } else {
+        rsp = RspError(
+            message: "Unknown Error: ${e.runtimeType}", requestId: requestId);
+      }
+      await _channel.invokeMethod(errorMethod, rsp.toMap());
     }
   }
 
   Future<void> error(RspError error) async =>
-      _channel.invokeMethod(errorMethod, error.toJson());
+      _channel.invokeMethod(errorMethod, error.toMap());
 }

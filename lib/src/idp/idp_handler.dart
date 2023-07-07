@@ -5,6 +5,8 @@
 
 import 'package:flutter/services.dart';
 
+import '../channel.dart';
+import '../req_default.dart';
 import '../rsp_error.dart';
 import '../rsp_handler.dart';
 import 'idp_wrapper.dart';
@@ -15,42 +17,47 @@ import 'req/req_sign.dart';
 import 'req/req_verify.dart';
 
 class IdpHandler {
+  static const name = "${Channel.name}.idp";
   final IdpWrapper _idp;
   late final RspHandler _rsp;
 
   IdpHandler(this._idp, this._rsp);
 
   Future<void> handler(MethodCall call) async {
-    String request = call.arguments['request'];
-    String requestId = call.arguments['requestId'];
     switch (call.method) {
-      case "isInitialized":
-        await _rsp.handle(requestId, () => Future.value(_idp.isInitialized));
-        break;
-      case "key":
-        await _rsp.handle(requestId, () => _idp.key(ReqKey.from(request)));
-        break;
-      case "export":
+      case "$name.isInitialized":
+        ReqDefault req = ReqDefault.from(call.arguments);
         await _rsp.handle(
-            requestId, () => _idp.export(ReqExport.from(request)));
+            req.requestId!, () => Future.value(_idp.isInitialized));
         break;
-      case "import":
-        await _rsp.handle(
-            requestId, () => _idp.import(ReqImport.from(request)));
+      case "$name.key":
+        ReqKey req = ReqKey.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _idp.key(req));
         break;
-      case "sign":
-        await _rsp.handle(requestId, () => _idp.sign(ReqSign.from(request)));
+      case "$name.export":
+        ReqExport req = ReqExport.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _idp.export(req));
         break;
-      case "verify":
-        await _rsp.handle(
-            requestId, () => _idp.verify(ReqVerify.from(request)));
+      case "$name.import":
+        ReqImport req = ReqImport.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _idp.import(req));
         break;
-      case "token":
-        await _rsp.handle(requestId, () => _idp.token());
+      case "$name.sign":
+        ReqSign req = ReqSign.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _idp.sign(req));
+        break;
+      case "$name.verify":
+        ReqVerify req = ReqVerify.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _idp.verify(req));
+        break;
+      case "$name.token":
+        ReqDefault req = ReqDefault.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _idp.token());
         break;
       default:
+        ReqDefault req = ReqDefault.from(call.arguments);
         await _rsp.error(RspError(
-            requestId: requestId,
+            requestId: req.requestId!,
             message: 'no method handler for method ${call.method}',
             stackTrace: StackTrace.current));
     }

@@ -3,19 +3,17 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqExport {
+class ReqExport extends Req {
   String? keyId;
   bool? public;
 
-  ReqExport({this.keyId, this.public = false});
+  ReqExport({this.keyId, this.public = false, String? requestId})
+      : super(requestId);
 
-  ReqExport.from(String? json) {
-    if (json != null) {
-      Map<String, dynamic> map = jsonDecode(json);
-      keyId = map["keyId"];
-      public = map["public"];
-    }
+  ReqExport.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    keyId = map?["keyId"];
+    public = map?["public"];
   }
 }

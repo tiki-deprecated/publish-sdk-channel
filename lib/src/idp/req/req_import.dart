@@ -3,21 +3,19 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqImport {
+class ReqImport extends Req {
   String? keyId;
   String? key;
   bool? public;
 
-  ReqImport({this.keyId, this.key, this.public = false});
+  ReqImport({this.keyId, this.key, this.public = false, String? requestId})
+      : super(requestId);
 
-  ReqImport.from(String? json) {
-    if (json != null) {
-      Map<String, dynamic> map = jsonDecode(json);
-      key = map["key"];
-      keyId = map["keyId"];
-      public = map["public"];
-    }
+  ReqImport.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    key = map?["key"];
+    keyId = map?["keyId"];
+    public = map?["public"];
   }
 }

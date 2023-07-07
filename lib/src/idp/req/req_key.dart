@@ -3,19 +3,17 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqKey {
+class ReqKey extends Req {
   String? keyId;
   bool? overwrite;
 
-  ReqKey({this.keyId, this.overwrite = false});
+  ReqKey({this.keyId, this.overwrite = false, String? requestId})
+      : super(requestId);
 
-  ReqKey.from(String? json) {
-    if (json != null) {
-      Map<String, dynamic> map = jsonDecode(json);
-      keyId = map["keyId"];
-      overwrite = map["overwrite"];
-    }
+  ReqKey.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    keyId = map?["keyId"];
+    overwrite = map?["overwrite"];
   }
 }

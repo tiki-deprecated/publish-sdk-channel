@@ -7,7 +7,7 @@ import 'dart:typed_data';
 
 import 'package:tiki_idp/tiki_idp.dart';
 
-import '../rsp_ok.dart';
+import '../rsp_default.dart';
 import 'key_flutter.dart';
 import 'req/req_export.dart';
 import 'req/req_import.dart';
@@ -23,7 +23,7 @@ import 'rsp/rsp_verify.dart';
 class IdpWrapper {
   late final TikiIdp? _idp;
 
-  IdpWrapper();
+  IdpWrapper({TikiIdp? idp}) : _idp = idp;
 
   TikiIdp initialize(String clientId, {List<String>? scope}) {
     KeyFlutter platform = KeyFlutter();
@@ -35,9 +35,9 @@ class IdpWrapper {
   RspIsInitialized get isInitialized =>
       RspIsInitialized(isInitialized: _idp != null);
 
-  Future<RspOk> key(ReqKey req) async {
+  Future<RspDefault> key(ReqKey req) async {
     await _idp!.key(req.keyId!, overwrite: req.overwrite ?? false);
-    return RspOk();
+    return RspDefault();
   }
 
   Future<RspExport> export(ReqExport req) async {
@@ -45,9 +45,9 @@ class IdpWrapper {
     return RspExport(key);
   }
 
-  Future<RspOk> import(ReqImport req) async {
+  Future<RspDefault> import(ReqImport req) async {
     await _idp!.import(req.keyId!, req.key!, public: req.public ?? false);
-    return RspOk();
+    return RspDefault();
   }
 
   Future<RspSign> sign(ReqSign req) async {

@@ -12,5 +12,6 @@ abstract class Rsp {
 
   Map<String, dynamic> toMap();
 
-  String toJson() => jsonEncode(toMap());
+  @override
+  String toString() => jsonEncode(toMap());
 }

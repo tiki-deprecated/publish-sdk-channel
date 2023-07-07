@@ -17,6 +17,10 @@ class RspError extends Rsp {
         stackTrace = e.stackTrace,
         super(requestId);
 
+  RspError.fromException(Exception e, {String? requestId})
+      : message = e.toString(),
+        super(requestId);
+
   @override
   Map<String, dynamic> toMap() =>
       {"message": message, "stacktrace": stackTrace.toString()};

@@ -19,16 +19,19 @@ import 'trail/trail_handler.dart';
 import 'trail/trail_wrapper.dart';
 
 class Channel {
-  final channel = const MethodChannel('com.mytiki.sdk');
-  final IdpWrapper _idp = IdpWrapper();
-  final TrailWrapper _trail = TrailWrapper();
+  static const name = 'com.mytiki.sdk';
+  final _channel = const MethodChannel(name);
+  final IdpWrapper _idp;
+  final TrailWrapper _trail;
 
-  late final RspHandler _rsp = RspHandler(channel);
+  late final RspHandler _rsp = RspHandler(_channel);
   late final IdpHandler _idpHandler = IdpHandler(_idp, _rsp);
   late final TrailHandler _trailHandler = TrailHandler(_trail, _rsp);
 
-  Channel() {
-    channel.setMethodCallHandler(handler);
+  Channel({IdpWrapper? idp, TrailWrapper? trail})
+      : _idp = idp ?? IdpWrapper(),
+        _trail = trail ?? TrailWrapper() {
+    _channel.setMethodCallHandler(handler);
   }
 
   Future<void> handler(MethodCall call) async {
@@ -47,12 +50,10 @@ class Channel {
         } else if (call.method.startsWith("trail.")) {
           await _trailHandler.handler(call);
         } else {
-          await channel.invokeMethod(
-              RspHandler.errorMethod,
-              RspError(
-                  requestId: requestId,
-                  message: 'no method handler for method ${call.method}',
-                  stackTrace: StackTrace.current));
+          await _rsp.error(RspError(
+              requestId: requestId,
+              message: 'no method handler for method ${call.method}',
+              stackTrace: StackTrace.current));
         }
     }
   }

@@ -6,17 +6,16 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-class ReqSign {
+import '../../req.dart';
+
+class ReqSign extends Req {
   String? keyId;
   Uint8List? message;
 
-  ReqSign({this.keyId, this.message});
+  ReqSign({this.keyId, this.message, String? requestId}) : super(requestId);
 
-  ReqSign.from(String? json) {
-    if (json != null) {
-      Map<String, dynamic> map = jsonDecode(json);
-      keyId = map["keyId"];
-      if (map["message"] != null) message = base64.decode(map["message"]);
-    }
+  ReqSign.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    keyId = map?["keyId"];
+    if (map?["message"] != null) message = base64.decode(map?["message"]);
   }
 }

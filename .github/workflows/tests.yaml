@@ -22,21 +22,24 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '3.7.7'
+          flutter-version: '3.10.5'
 
-      - name: Start iOS Simulator
-        run: |
-          xcrun xctrace list devices
-          UDID=$(xcrun xctrace list devices | grep "^iPhone 14 Simulator (16.2) (" | awk '{gsub(/[()]/,""); print $NF}')
-          echo $UDID
-          xcrun simctl boot "${UDID:?No Simulator with this name found}"
-      
-      - name: Load TIKI Credentials    
-        env:
-          TIKI_CREDENTIALS: ${{ secrets.TIKI_CREDENTIALS }}
-        run: |
-          echo "$TIKI_CREDENTIALS" >> integration_test/tiki_credentials.dart
+      - name: Run Tests
+        run: flutter test --reporter github
 
-      - name: Run iOS TikiSdkPlatform Integration Tests
-        run: flutter test integration_test/tiki_sdk_flutter_platform_test.dart
-      
+      - name: Dart Format
+        run: |
+          cd lib
+          dart format . -o show --set-exit-if-changed
+
+      - name: Check dart publish
+        run: dart pub publish --dry-run
+
+      - name: Verify tag version
+        id: tag
+        run: |
+          export export TAG_VERSION=$(grep version pubspec.yaml |  awk -F  ': ' '{print $2}')
+          echo "version=$TAG_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Confirm tag version
+        run: echo ${{ steps.tag.outputs.version }}

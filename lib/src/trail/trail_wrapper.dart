@@ -28,7 +28,7 @@ class TrailWrapper {
   late final PayableWrapper payable;
   late final ReceiptWrapper receipt;
 
-  TrailWrapper();
+  TrailWrapper({TikiTrail? trail}) : _trail = trail;
 
   Future<RspInitialized> initialize(
       String id, String publishingId, String origin, TikiIdp idp) async {

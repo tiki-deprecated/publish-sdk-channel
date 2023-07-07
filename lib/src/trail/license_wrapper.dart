@@ -34,7 +34,7 @@ class LicenseWrapper {
     return RspLicenses.from(licenses);
   }
 
-  RspLicense? get(ReqLicenseGet req) {
+  RspLicense get(ReqLicenseGet req) {
     LicenseRecord? license = _trail.license.get(req.id!);
     return RspLicense.from(license);
   }

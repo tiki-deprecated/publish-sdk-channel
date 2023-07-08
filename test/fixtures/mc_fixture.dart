@@ -6,8 +6,8 @@
 import 'package:flutter/services.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'package:tiki_sdk_platform_channel/src/req.dart';
-import 'package:tiki_sdk_platform_channel/src/rsp_handler.dart';
+import 'package:tiki_sdk_native/src/req.dart';
+import 'package:tiki_sdk_native/src/rsp_handler.dart';
 import 'package:uuid/uuid.dart';
 
 import '../mocks/shared_mocks.mocks.dart';

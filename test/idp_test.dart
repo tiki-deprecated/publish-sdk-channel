@@ -9,9 +9,9 @@ import 'package:flutter/services.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:tiki_idp/tiki_idp.dart';
-import 'package:tiki_sdk_platform_channel/src/idp/idp_handler.dart';
-import 'package:tiki_sdk_platform_channel/src/idp/idp_wrapper.dart';
-import 'package:tiki_sdk_platform_channel/src/rsp_handler.dart';
+import 'package:tiki_sdk_native/src/idp/idp_handler.dart';
+import 'package:tiki_sdk_native/src/idp/idp_wrapper.dart';
+import 'package:tiki_sdk_native/src/rsp_handler.dart';
 import 'package:uuid/uuid.dart';
 
 import 'fixtures/mc_fixture.dart' as mc_fixture;

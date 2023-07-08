@@ -5,8 +5,6 @@
 
 import 'dart:convert';
 
-import 'package:tiki_trail/cache/title/title_tag.dart';
-
 class ReqReceipt {
   String? payableId;
   String? amount;

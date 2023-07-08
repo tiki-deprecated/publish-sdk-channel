@@ -1,3 +1,6 @@
+## 1.0.11
+* minor bug fixes 
+
 ## 1.0.3
 
 * bump version to trigger release 

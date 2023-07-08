@@ -44,6 +44,6 @@ class RspLicense extends Rsp {
         "terms": terms,
         "description": description,
         "expiry": expiry,
-        "request_id": requestId
+        "requestId": requestId
       };
 }

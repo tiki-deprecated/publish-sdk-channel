@@ -3,17 +3,14 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqReceiptAll {
+class ReqReceiptAll extends Req {
   String? payableId;
 
-  ReqReceiptAll({this.payableId});
+  ReqReceiptAll({this.payableId, String? requestId}) : super(requestId);
 
-  ReqReceiptAll.from(String? json) {
-    if (json != null) {
-      Map map = jsonDecode(json);
-      payableId = map["payableId"];
-    }
+  ReqReceiptAll.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    payableId = map?["payableId"];
   }
 }

@@ -20,6 +20,6 @@ class RspPayables extends Rsp {
   @override
   Map<String, dynamic> toMap() => {
         "payables": payables.map((payable) => payable.toMap()).toList(),
-        "request_id": requestId
+        "requestId": requestId
       };
 }

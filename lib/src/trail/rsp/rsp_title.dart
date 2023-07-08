@@ -39,6 +39,6 @@ class RspTitle extends Rsp {
         "origin": origin,
         "tags": tags,
         "description": description,
-        "request_id": requestId
+        "requestId": requestId
       };
 }

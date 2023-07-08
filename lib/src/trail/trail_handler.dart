@@ -5,6 +5,8 @@
 
 import 'package:flutter/services.dart';
 
+import '../channel.dart';
+import '../req_default.dart';
 import '../rsp_error.dart';
 import '../rsp_handler.dart';
 import 'req/req_guard.dart';
@@ -23,91 +25,92 @@ import 'req/req_title_id.dart';
 import 'trail_wrapper.dart';
 
 class TrailHandler {
+  static const name = "${Channel.name}.trail";
   final TrailWrapper _trail;
   late final RspHandler _rsp;
 
   TrailHandler(this._trail, this._rsp);
 
   Future<void> handler(MethodCall call) async {
-    String request = call.arguments['request'];
-    String requestId = call.arguments['requestId'];
     switch (call.method) {
-      case "isInitialized":
-        await _rsp.handle(requestId, () => Future.value(_trail.isInitialized));
-        break;
-      case "address":
-        await _rsp.handle(requestId, () => Future.value(_trail.address));
-        break;
-      case "id":
-        await _rsp.handle(requestId, () => Future.value(_trail.id));
-        break;
-      case "guard":
-        await _rsp.handle(requestId,
-            () => Future.value(_trail.guard(ReqGuard.from(request))));
-        break;
-      case "title.create":
+      case "$name.isInitialized":
+        ReqDefault req = ReqDefault.from(call.arguments);
         await _rsp.handle(
-            requestId, () => _trail.title.create(ReqTitle.from(request)));
+            req.requestId!, () => Future.value(_trail.isInitialized));
         break;
-      case "title.get":
-        await _rsp.handle(requestId,
-            () => Future.value(_trail.title.get(ReqTitleGet.from(request))));
+      case "$name.address":
+        ReqDefault req = ReqDefault.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => Future.value(_trail.address));
         break;
-      case "title.id":
-        await _rsp.handle(requestId,
-            () => Future.value(_trail.title.id(ReqTitleId.from(request))));
+      case "$name.id":
+        ReqDefault req = ReqDefault.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => Future.value(_trail.id));
         break;
-      case "license.create":
+      case "$name.guard":
+        ReqGuard req = ReqGuard.from(call.arguments);
         await _rsp.handle(
-            requestId, () => _trail.license.create(ReqLicense.from(request)));
+            req.requestId!, () => Future.value(_trail.guard(req)));
         break;
-      case "license.all":
-        await _rsp.handle(
-            requestId,
-            () =>
-                Future.value(_trail.license.all(ReqLicenseAll.from(request))));
+      case "$name.title.create":
+        ReqTitle req = ReqTitle.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _trail.title.create(req));
         break;
-      case "license.get":
+      case "$name.title.get":
+        ReqTitleGet req = ReqTitleGet.from(call.arguments);
         await _rsp.handle(
-            requestId,
-            () =>
-                Future.value(_trail.license.get(ReqLicenseGet.from(request))));
+            req.requestId!, () => Future.value(_trail.title.get(req)));
         break;
-      case "payable.create":
+      case "$name.title.id":
+        ReqTitleId req = ReqTitleId.from(call.arguments);
         await _rsp.handle(
-            requestId, () => _trail.payable.create(ReqPayable.from(request)));
+            req.requestId!, () => Future.value(_trail.title.id(req)));
         break;
-      case "payable.all":
-        await _rsp.handle(
-            requestId,
-            () =>
-                Future.value(_trail.payable.all(ReqPayableAll.from(request))));
+      case "$name.license.create":
+        ReqLicense req = ReqLicense.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _trail.license.create(req));
         break;
-      case "payable.get":
+      case "$name.license.all":
+        ReqLicenseAll req = ReqLicenseAll.from(call.arguments);
         await _rsp.handle(
-            requestId,
-            () =>
-                Future.value(_trail.payable.get(ReqPayableGet.from(request))));
+            req.requestId!, () => Future.value(_trail.license.all(req)));
         break;
-      case "receipt.create":
+      case "$name.license.get":
+        ReqLicenseGet req = ReqLicenseGet.from(call.arguments);
         await _rsp.handle(
-            requestId, () => _trail.receipt.create(ReqReceipt.from(request)));
+            req.requestId!, () => Future.value(_trail.license.get(req)));
         break;
-      case "receipt.all":
-        await _rsp.handle(
-            requestId,
-            () =>
-                Future.value(_trail.receipt.all(ReqReceiptAll.from(request))));
+      case "$name.payable.create":
+        ReqPayable req = ReqPayable.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _trail.payable.create(req));
         break;
-      case "receipt.get":
+      case "$name.payable.all":
+        ReqPayableAll req = ReqPayableAll.from(call.arguments);
         await _rsp.handle(
-            requestId,
-            () =>
-                Future.value(_trail.receipt.get(ReqReceiptGet.from(request))));
+            req.requestId!, () => Future.value(_trail.payable.all(req)));
+        break;
+      case "$name.payable.get":
+        ReqPayableGet req = ReqPayableGet.from(call.arguments);
+        await _rsp.handle(
+            req.requestId!, () => Future.value(_trail.payable.get(req)));
+        break;
+      case "$name.receipt.create":
+        ReqReceipt req = ReqReceipt.from(call.arguments);
+        await _rsp.handle(req.requestId!, () => _trail.receipt.create(req));
+        break;
+      case "$name.receipt.all":
+        ReqReceiptAll req = ReqReceiptAll.from(call.arguments);
+        await _rsp.handle(
+            req.requestId!, () => Future.value(_trail.receipt.all(req)));
+        break;
+      case "$name.receipt.get":
+        ReqReceiptGet req = ReqReceiptGet.from(call.arguments);
+        await _rsp.handle(
+            req.requestId!, () => Future.value(_trail.receipt.get(req)));
         break;
       default:
+        ReqDefault req = ReqDefault.from(call.arguments);
         await _rsp.error(RspError(
-            requestId: requestId,
+            requestId: req.requestId!,
             message: 'no method handler for method ${call.method}',
             stackTrace: StackTrace.current));
     }

@@ -20,6 +20,6 @@ class RspReceipts extends Rsp {
   @override
   Map<String, dynamic> toMap() => {
         "receipts": receipts.map((receipt) => receipt.toMap()).toList(),
-        "request_id": requestId
+        "requestId": requestId
       };
 }

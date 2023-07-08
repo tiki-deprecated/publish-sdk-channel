@@ -20,6 +20,6 @@ class RspLicenses extends Rsp {
   @override
   Map<String, dynamic> toMap() => {
         "licenses": licenses.map((license) => license.toMap()).toList(),
-        "request_id": requestId
+        "requestId": requestId
       };
 }

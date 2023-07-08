@@ -13,5 +13,5 @@ class RspInitialized extends Rsp {
 
   @override
   Map<String, dynamic> toMap() =>
-      {"id": id, "address": address, "request_id": requestId};
+      {"id": id, "address": address, "requestId": requestId};
 }

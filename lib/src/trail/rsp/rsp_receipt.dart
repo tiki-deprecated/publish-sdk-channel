@@ -39,6 +39,6 @@ class RspReceipt extends Rsp {
         "description": description,
         "amount": amount,
         "reference": reference,
-        "request_id": requestId
+        "requestId": requestId
       };
 }

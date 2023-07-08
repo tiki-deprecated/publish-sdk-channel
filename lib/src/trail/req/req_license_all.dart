@@ -3,17 +3,14 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqLicenseAll {
+class ReqLicenseAll extends Req {
   String? titleId;
 
-  ReqLicenseAll({this.titleId});
+  ReqLicenseAll({this.titleId, String? requestId}) : super(requestId);
 
-  ReqLicenseAll.from(String? json) {
-    if (json != null) {
-      Map map = jsonDecode(json);
-      titleId = map["titleId"];
-    }
+  ReqLicenseAll.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    titleId = map?["titleId"];
   }
 }

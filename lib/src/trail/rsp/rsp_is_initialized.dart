@@ -13,5 +13,5 @@ class RspIsInitialized extends Rsp {
 
   @override
   Map<String, dynamic> toMap() =>
-      {"isInitialized": isInitialized, "request_id": requestId};
+      {"isInitialized": isInitialized, "requestId": requestId};
 }

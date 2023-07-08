@@ -3,17 +3,14 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqTitleId {
+class ReqTitleId extends Req {
   String? id;
 
-  ReqTitleId({this.id});
+  ReqTitleId({this.id, String? requestId}) : super(requestId);
 
-  ReqTitleId.from(String? json) {
-    if (json != null) {
-      Map map = jsonDecode(json);
-      id = map["id"];
-    }
+  ReqTitleId.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    id = map?["id"];
   }
 }

@@ -15,5 +15,5 @@ class RspSign extends Rsp {
 
   @override
   Map<String, dynamic> toMap() =>
-      {"signature": base64.encode(signature), "request_id": requestId};
+      {"signature": base64.encode(signature), "requestId": requestId};
 }

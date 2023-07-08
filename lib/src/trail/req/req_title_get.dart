@@ -3,19 +3,16 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqTitleGet {
+class ReqTitleGet extends Req {
   String? ptr;
   String? origin;
 
-  ReqTitleGet({this.ptr, this.origin});
+  ReqTitleGet({this.ptr, this.origin, String? requestId}) : super(requestId);
 
-  ReqTitleGet.from(String? json) {
-    if (json != null) {
-      Map map = jsonDecode(json);
-      ptr = map["ptr"];
-      origin = map["origin"];
-    }
+  ReqTitleGet.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    ptr = map?["ptr"];
+    origin = map?["origin"];
   }
 }

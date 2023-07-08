@@ -15,7 +15,7 @@ import 'package:tiki_sdk_native/src/rsp_handler.dart';
 import 'package:uuid/uuid.dart';
 
 import 'fixtures/mc_fixture.dart' as mc_fixture;
-import 'mocks/shared_mocks.mocks.dart';
+import 'mocks/mock_gen.mocks.dart';
 
 void main() {
   group('handler', () {
@@ -30,7 +30,7 @@ void main() {
     test('isInitialized', () async {
       Map req = mc_fixture.request();
       mc_fixture.expect((rsp) {
-        expect(rsp["request_id"], mc_fixture.requestId(req));
+        expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["isInitialized"], true);
       });
       await handler
@@ -42,7 +42,7 @@ void main() {
       Map req = mc_fixture.request(body: {"keyId": keyId});
       when(idp.key(keyId)).thenAnswer((_) => Future.value());
       mc_fixture.expect((rsp) {
-        expect(rsp["request_id"], mc_fixture.requestId(req));
+        expect(rsp["requestId"], mc_fixture.requestId(req));
       });
       await handler.handler(MethodCall("com.mytiki.sdk.idp.key", req));
     });
@@ -54,7 +54,7 @@ void main() {
       when(idp.export(keyId, public: true))
           .thenAnswer((_) => Future.value(key));
       mc_fixture.expect((rsp) {
-        expect(rsp["request_id"], mc_fixture.requestId(req));
+        expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["key"], key);
       });
       await handler.handler(MethodCall("com.mytiki.sdk.idp.export", req));
@@ -68,7 +68,7 @@ void main() {
       when(idp.import(keyId, key, public: false))
           .thenAnswer((_) => Future.value());
       mc_fixture.expect((rsp) {
-        expect(rsp["request_id"], mc_fixture.requestId(req));
+        expect(rsp["requestId"], mc_fixture.requestId(req));
       });
       await handler.handler(MethodCall("com.mytiki.sdk.idp.import", req));
     });
@@ -81,7 +81,7 @@ void main() {
           .request(body: {"keyId": keyId, "message": base64.encode(message)});
       when(idp.sign(keyId, message)).thenAnswer((_) => Future.value(signature));
       mc_fixture.expect((rsp) {
-        expect(rsp["request_id"], mc_fixture.requestId(req));
+        expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["signature"], base64.encode(signature));
       });
       await handler.handler(MethodCall("com.mytiki.sdk.idp.sign", req));
@@ -99,7 +99,7 @@ void main() {
       when(idp.verify(keyId, message, signature))
           .thenAnswer((_) => Future.value(true));
       mc_fixture.expect((rsp) {
-        expect(rsp["request_id"], mc_fixture.requestId(req));
+        expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["isVerified"], true);
       });
       await handler.handler(MethodCall("com.mytiki.sdk.idp.verify", req));
@@ -117,7 +117,7 @@ void main() {
           accessToken, tokenType, expires,
           refreshToken: refreshToken, scope: scope)));
       mc_fixture.expect((rsp) {
-        expect(rsp["request_id"], mc_fixture.requestId(req));
+        expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["accessToken"], accessToken);
         expect(rsp["tokenType"], tokenType);
         expect(rsp["expires"], expires.millisecondsSinceEpoch);

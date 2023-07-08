@@ -3,17 +3,14 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqPayableAll {
+class ReqPayableAll extends Req {
   String? licenseId;
 
-  ReqPayableAll({this.licenseId});
+  ReqPayableAll({this.licenseId, String? requestId}) : super(requestId);
 
-  ReqPayableAll.from(String? json) {
-    if (json != null) {
-      Map map = jsonDecode(json);
-      licenseId = map["licenseId"];
-    }
+  ReqPayableAll.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    licenseId = map?["licenseId"];
   }
 }

@@ -23,6 +23,6 @@ class RspLicenseUse extends Rsp {
   Map<String, dynamic> toMap() => {
         "usecases": usecases,
         "destinations": destinations,
-        "request_id": requestId
+        "requestId": requestId
       };
 }

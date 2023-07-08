@@ -47,6 +47,6 @@ class RspPayable extends Rsp {
         "amount": amount,
         "type": type,
         "reference": reference,
-        "request_id": requestId
+        "requestId": requestId
       };
 }

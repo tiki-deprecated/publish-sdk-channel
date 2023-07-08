@@ -10,7 +10,7 @@ import 'package:tiki_sdk_native/src/req.dart';
 import 'package:tiki_sdk_native/src/rsp_handler.dart';
 import 'package:uuid/uuid.dart';
 
-import '../mocks/shared_mocks.mocks.dart';
+import '../mocks/mock_gen.mocks.dart';
 
 MethodChannel channel = MockMethodChannel();
 

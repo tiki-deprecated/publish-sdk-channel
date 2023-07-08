@@ -9,5 +9,5 @@ class RspDefault extends Rsp {
   RspDefault({String? requestId}) : super(requestId);
 
   @override
-  Map<String, dynamic> toMap() => {"request_id": requestId};
+  Map<String, dynamic> toMap() => {"requestId": requestId};
 }

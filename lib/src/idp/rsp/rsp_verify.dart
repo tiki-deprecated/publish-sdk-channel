@@ -12,5 +12,5 @@ class RspVerify extends Rsp {
 
   @override
   Map<String, dynamic> toMap() =>
-      {"isVerified": isVerified, "request_id": requestId};
+      {"isVerified": isVerified, "requestId": requestId};
 }

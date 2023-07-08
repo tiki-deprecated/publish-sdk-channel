@@ -33,6 +33,6 @@ class RspToken extends Rsp {
         "expires": expires,
         "refreshToken": refreshToken,
         "scope": scope,
-        "request_id": requestId
+        "requestId": requestId
       };
 }

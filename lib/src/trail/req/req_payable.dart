@@ -3,9 +3,9 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqPayable {
+class ReqPayable extends Req {
   String? licenseId;
   String? amount;
   String? type;
@@ -19,19 +19,18 @@ class ReqPayable {
       this.type,
       this.expiry,
       this.description,
-      this.reference});
+      this.reference,
+      String? requestId})
+      : super(requestId);
 
-  ReqPayable.from(String? json) {
-    if (json != null) {
-      Map<String, dynamic> map = jsonDecode(json);
-      licenseId = map["licenseId"];
-      amount = map["amount"];
-      type = map["type"];
-      description = map["description"];
-      reference = map["reference"];
-      if (map["expiry"] != null) {
-        expiry = DateTime.fromMillisecondsSinceEpoch(map["expiry"]);
-      }
+  ReqPayable.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    licenseId = map?["licenseId"];
+    amount = map?["amount"];
+    type = map?["type"];
+    description = map?["description"];
+    reference = map?["reference"];
+    if (map?["expiry"] != null) {
+      expiry = DateTime.fromMillisecondsSinceEpoch(map!["expiry"]);
     }
   }
 }

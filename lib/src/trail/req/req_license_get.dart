@@ -5,15 +5,14 @@
 
 import 'dart:convert';
 
-class ReqLicenseGet {
+import '../../req.dart';
+
+class ReqLicenseGet extends Req {
   String? id;
 
-  ReqLicenseGet({this.id});
+  ReqLicenseGet({this.id, String? requestId}) : super(requestId);
 
-  ReqLicenseGet.from(String? json) {
-    if (json != null) {
-      Map map = jsonDecode(json);
-      id = map["id"];
-    }
+  ReqLicenseGet.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    id = map?["id"];
   }
 }

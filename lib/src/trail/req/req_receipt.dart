@@ -3,23 +3,26 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqReceipt {
+class ReqReceipt extends Req {
   String? payableId;
   String? amount;
   String? description;
   String? reference;
 
-  ReqReceipt({this.payableId, this.amount, this.description, this.reference});
+  ReqReceipt(
+      {this.payableId,
+      this.amount,
+      this.description,
+      this.reference,
+      String? requestId})
+      : super(requestId);
 
-  ReqReceipt.from(String? json) {
-    if (json != null) {
-      Map<String, dynamic> map = jsonDecode(json);
-      payableId = map["payableId"];
-      amount = map["amount"];
-      description = map["description"];
-      reference = map["reference"];
-    }
+  ReqReceipt.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    payableId = map?["payableId"];
+    amount = map?["amount"];
+    description = map?["description"];
+    reference = map?["reference"];
   }
 }

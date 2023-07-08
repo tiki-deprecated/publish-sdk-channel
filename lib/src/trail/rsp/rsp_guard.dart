@@ -14,5 +14,5 @@ class RspGuard extends Rsp {
 
   @override
   Map<String, dynamic> toMap() =>
-      {"success": success, "reason": reason, "request_id": requestId};
+      {"success": success, "reason": reason, "requestId": requestId};
 }

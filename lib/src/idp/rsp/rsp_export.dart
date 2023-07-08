@@ -11,5 +11,5 @@ class RspExport extends Rsp {
   RspExport(this.key, {String? requestId}) : super(requestId);
 
   @override
-  Map<String, dynamic> toMap() => {"key": key, "request_id": requestId};
+  Map<String, dynamic> toMap() => {"key": key, "requestId": requestId};
 }

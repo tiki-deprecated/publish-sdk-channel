@@ -3,17 +3,14 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import '../../req.dart';
 
-class ReqPayableGet {
+class ReqPayableGet extends Req {
   String? id;
 
-  ReqPayableGet({this.id});
+  ReqPayableGet({this.id, String? requestId}) : super(requestId);
 
-  ReqPayableGet.from(String? json) {
-    if (json != null) {
-      Map map = jsonDecode(json);
-      id = map["id"];
-    }
+  ReqPayableGet.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
+    id = map?["id"];
   }
 }

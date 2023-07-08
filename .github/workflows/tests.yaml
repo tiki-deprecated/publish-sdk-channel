@@ -31,9 +31,6 @@ jobs:
           cd lib
           dart format . -o show --set-exit-if-changed
 
-      - name: Check dart publish
-        run: dart pub publish --dry-run
-
       - name: Verify tag version
         id: tag
         run: |

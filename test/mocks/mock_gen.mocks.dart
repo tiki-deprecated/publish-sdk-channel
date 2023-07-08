@@ -3,16 +3,39 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i7;
-import 'dart:typed_data' as _i8;
+import 'dart:async' as _i22;
+import 'dart:typed_data' as _i23;
 
 import 'package:flutter/src/services/binary_messenger.dart' as _i5;
 import 'package:flutter/src/services/message_codec.dart' as _i4;
-import 'package:flutter/src/services/platform_channel.dart' as _i9;
+import 'package:flutter/src/services/platform_channel.dart' as _i24;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:tiki_idp/auth/jwt.dart' as _i2;
 import 'package:tiki_idp/registry/registry.dart' as _i3;
-import 'package:tiki_idp/tiki_idp.dart' as _i6;
+import 'package:tiki_idp/tiki_idp.dart' as _i16;
+import 'package:tiki_sdk_native/src/idp/idp_wrapper.dart' as _i27;
+import 'package:tiki_sdk_native/src/idp/req/req_export.dart' as _i29;
+import 'package:tiki_sdk_native/src/idp/req/req_import.dart' as _i30;
+import 'package:tiki_sdk_native/src/idp/req/req_key.dart' as _i28;
+import 'package:tiki_sdk_native/src/idp/req/req_sign.dart' as _i31;
+import 'package:tiki_sdk_native/src/idp/req/req_verify.dart' as _i32;
+import 'package:tiki_sdk_native/src/idp/rsp/rsp_export.dart' as _i18;
+import 'package:tiki_sdk_native/src/idp/rsp/rsp_is_initialized.dart' as _i15;
+import 'package:tiki_sdk_native/src/idp/rsp/rsp_sign.dart' as _i19;
+import 'package:tiki_sdk_native/src/idp/rsp/rsp_token.dart' as _i21;
+import 'package:tiki_sdk_native/src/idp/rsp/rsp_verify.dart' as _i20;
+import 'package:tiki_sdk_native/src/rsp_default.dart' as _i17;
+import 'package:tiki_sdk_native/src/trail/license_wrapper.dart' as _i7;
+import 'package:tiki_sdk_native/src/trail/payable_wrapper.dart' as _i8;
+import 'package:tiki_sdk_native/src/trail/receipt_wrapper.dart' as _i9;
+import 'package:tiki_sdk_native/src/trail/req/req_guard.dart' as _i26;
+import 'package:tiki_sdk_native/src/trail/rsp/rsp_address.dart' as _i10;
+import 'package:tiki_sdk_native/src/trail/rsp/rsp_guard.dart' as _i14;
+import 'package:tiki_sdk_native/src/trail/rsp/rsp_id.dart' as _i11;
+import 'package:tiki_sdk_native/src/trail/rsp/rsp_initialized.dart' as _i13;
+import 'package:tiki_sdk_native/src/trail/rsp/rsp_is_initialized.dart' as _i12;
+import 'package:tiki_sdk_native/src/trail/title_wrapper.dart' as _i6;
+import 'package:tiki_sdk_native/src/trail/trail_wrapper.dart' as _i25;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -66,24 +89,190 @@ class _FakeBinaryMessenger_3 extends _i1.SmartFake
         );
 }
 
+class _FakeTitleWrapper_4 extends _i1.SmartFake implements _i6.TitleWrapper {
+  _FakeTitleWrapper_4(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeLicenseWrapper_5 extends _i1.SmartFake
+    implements _i7.LicenseWrapper {
+  _FakeLicenseWrapper_5(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakePayableWrapper_6 extends _i1.SmartFake
+    implements _i8.PayableWrapper {
+  _FakePayableWrapper_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeReceiptWrapper_7 extends _i1.SmartFake
+    implements _i9.ReceiptWrapper {
+  _FakeReceiptWrapper_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspAddress_8 extends _i1.SmartFake implements _i10.RspAddress {
+  _FakeRspAddress_8(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspId_9 extends _i1.SmartFake implements _i11.RspId {
+  _FakeRspId_9(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspIsInitialized_10 extends _i1.SmartFake
+    implements _i12.RspIsInitialized {
+  _FakeRspIsInitialized_10(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspInitialized_11 extends _i1.SmartFake
+    implements _i13.RspInitialized {
+  _FakeRspInitialized_11(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspGuard_12 extends _i1.SmartFake implements _i14.RspGuard {
+  _FakeRspGuard_12(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspIsInitialized_13 extends _i1.SmartFake
+    implements _i15.RspIsInitialized {
+  _FakeRspIsInitialized_13(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeTikiIdp_14 extends _i1.SmartFake implements _i16.TikiIdp {
+  _FakeTikiIdp_14(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspDefault_15 extends _i1.SmartFake implements _i17.RspDefault {
+  _FakeRspDefault_15(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspExport_16 extends _i1.SmartFake implements _i18.RspExport {
+  _FakeRspExport_16(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspSign_17 extends _i1.SmartFake implements _i19.RspSign {
+  _FakeRspSign_17(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspVerify_18 extends _i1.SmartFake implements _i20.RspVerify {
+  _FakeRspVerify_18(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeRspToken_19 extends _i1.SmartFake implements _i21.RspToken {
+  _FakeRspToken_19(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [TikiIdp].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
+class MockTikiIdp extends _i1.Mock implements _i16.TikiIdp {
   @override
-  _i7.Future<_i2.JWT> get token => (super.noSuchMethod(
+  _i22.Future<_i2.JWT> get token => (super.noSuchMethod(
         Invocation.getter(#token),
-        returnValue: _i7.Future<_i2.JWT>.value(_FakeJWT_0(
+        returnValue: _i22.Future<_i2.JWT>.value(_FakeJWT_0(
           this,
           Invocation.getter(#token),
         )),
-        returnValueForMissingStub: _i7.Future<_i2.JWT>.value(_FakeJWT_0(
+        returnValueForMissingStub: _i22.Future<_i2.JWT>.value(_FakeJWT_0(
           this,
           Invocation.getter(#token),
         )),
-      ) as _i7.Future<_i2.JWT>);
+      ) as _i22.Future<_i2.JWT>);
   @override
-  _i7.Future<void> key(
+  _i22.Future<void> key(
     String? keyId, {
     bool? overwrite = false,
   }) =>
@@ -93,11 +282,11 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
           [keyId],
           {#overwrite: overwrite},
         ),
-        returnValue: _i7.Future<void>.value(),
-        returnValueForMissingStub: _i7.Future<void>.value(),
-      ) as _i7.Future<void>);
+        returnValue: _i22.Future<void>.value(),
+        returnValueForMissingStub: _i22.Future<void>.value(),
+      ) as _i22.Future<void>);
   @override
-  _i7.Future<String> export(
+  _i22.Future<String> export(
     String? keyId, {
     bool? public = true,
   }) =>
@@ -107,11 +296,11 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
           [keyId],
           {#public: public},
         ),
-        returnValue: _i7.Future<String>.value(''),
-        returnValueForMissingStub: _i7.Future<String>.value(''),
-      ) as _i7.Future<String>);
+        returnValue: _i22.Future<String>.value(''),
+        returnValueForMissingStub: _i22.Future<String>.value(''),
+      ) as _i22.Future<String>);
   @override
-  _i7.Future<void> import(
+  _i22.Future<void> import(
     String? keyId,
     String? key, {
     bool? public = true,
@@ -125,13 +314,13 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
           ],
           {#public: public},
         ),
-        returnValue: _i7.Future<void>.value(),
-        returnValueForMissingStub: _i7.Future<void>.value(),
-      ) as _i7.Future<void>);
+        returnValue: _i22.Future<void>.value(),
+        returnValueForMissingStub: _i22.Future<void>.value(),
+      ) as _i22.Future<void>);
   @override
-  _i7.Future<_i8.Uint8List> sign(
+  _i22.Future<_i23.Uint8List> sign(
     String? keyId,
-    _i8.Uint8List? message,
+    _i23.Uint8List? message,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -141,15 +330,15 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
             message,
           ],
         ),
-        returnValue: _i7.Future<_i8.Uint8List>.value(_i8.Uint8List(0)),
+        returnValue: _i22.Future<_i23.Uint8List>.value(_i23.Uint8List(0)),
         returnValueForMissingStub:
-            _i7.Future<_i8.Uint8List>.value(_i8.Uint8List(0)),
-      ) as _i7.Future<_i8.Uint8List>);
+            _i22.Future<_i23.Uint8List>.value(_i23.Uint8List(0)),
+      ) as _i22.Future<_i23.Uint8List>);
   @override
-  _i7.Future<bool> verify(
+  _i22.Future<bool> verify(
     String? keyId,
-    _i8.Uint8List? message,
-    _i8.Uint8List? signature,
+    _i23.Uint8List? message,
+    _i23.Uint8List? signature,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -160,11 +349,11 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
             signature,
           ],
         ),
-        returnValue: _i7.Future<bool>.value(false),
-        returnValueForMissingStub: _i7.Future<bool>.value(false),
-      ) as _i7.Future<bool>);
+        returnValue: _i22.Future<bool>.value(false),
+        returnValueForMissingStub: _i22.Future<bool>.value(false),
+      ) as _i22.Future<bool>);
   @override
-  _i7.Future<_i3.Registry> register(
+  _i22.Future<_i3.Registry> register(
     String? user,
     String? address, {
     String? token,
@@ -182,7 +371,7 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
             #keyId: keyId,
           },
         ),
-        returnValue: _i7.Future<_i3.Registry>.value(_FakeRegistry_1(
+        returnValue: _i22.Future<_i3.Registry>.value(_FakeRegistry_1(
           this,
           Invocation.method(
             #register,
@@ -197,7 +386,7 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
           ),
         )),
         returnValueForMissingStub:
-            _i7.Future<_i3.Registry>.value(_FakeRegistry_1(
+            _i22.Future<_i3.Registry>.value(_FakeRegistry_1(
           this,
           Invocation.method(
             #register,
@@ -211,9 +400,9 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
             },
           ),
         )),
-      ) as _i7.Future<_i3.Registry>);
+      ) as _i22.Future<_i3.Registry>);
   @override
-  _i7.Future<_i3.Registry> registry(
+  _i22.Future<_i3.Registry> registry(
     String? keyId,
     String? user,
   ) =>
@@ -225,7 +414,7 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
             user,
           ],
         ),
-        returnValue: _i7.Future<_i3.Registry>.value(_FakeRegistry_1(
+        returnValue: _i22.Future<_i3.Registry>.value(_FakeRegistry_1(
           this,
           Invocation.method(
             #registry,
@@ -236,7 +425,7 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
           ),
         )),
         returnValueForMissingStub:
-            _i7.Future<_i3.Registry>.value(_FakeRegistry_1(
+            _i22.Future<_i3.Registry>.value(_FakeRegistry_1(
           this,
           Invocation.method(
             #registry,
@@ -246,13 +435,13 @@ class MockTikiIdp extends _i1.Mock implements _i6.TikiIdp {
             ],
           ),
         )),
-      ) as _i7.Future<_i3.Registry>);
+      ) as _i22.Future<_i3.Registry>);
 }
 
 /// A class which mocks [MethodChannel].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMethodChannel extends _i1.Mock implements _i9.MethodChannel {
+class MockMethodChannel extends _i1.Mock implements _i24.MethodChannel {
   @override
   String get name => (super.noSuchMethod(
         Invocation.getter(#name),
@@ -284,7 +473,7 @@ class MockMethodChannel extends _i1.Mock implements _i9.MethodChannel {
         ),
       ) as _i5.BinaryMessenger);
   @override
-  _i7.Future<T?> invokeMethod<T>(
+  _i22.Future<T?> invokeMethod<T>(
     String? method, [
     dynamic arguments,
   ]) =>
@@ -296,11 +485,11 @@ class MockMethodChannel extends _i1.Mock implements _i9.MethodChannel {
             arguments,
           ],
         ),
-        returnValue: _i7.Future<T?>.value(),
-        returnValueForMissingStub: _i7.Future<T?>.value(),
-      ) as _i7.Future<T?>);
+        returnValue: _i22.Future<T?>.value(),
+        returnValueForMissingStub: _i22.Future<T?>.value(),
+      ) as _i22.Future<T?>);
   @override
-  _i7.Future<List<T>?> invokeListMethod<T>(
+  _i22.Future<List<T>?> invokeListMethod<T>(
     String? method, [
     dynamic arguments,
   ]) =>
@@ -312,11 +501,11 @@ class MockMethodChannel extends _i1.Mock implements _i9.MethodChannel {
             arguments,
           ],
         ),
-        returnValue: _i7.Future<List<T>?>.value(),
-        returnValueForMissingStub: _i7.Future<List<T>?>.value(),
-      ) as _i7.Future<List<T>?>);
+        returnValue: _i22.Future<List<T>?>.value(),
+        returnValueForMissingStub: _i22.Future<List<T>?>.value(),
+      ) as _i22.Future<List<T>?>);
   @override
-  _i7.Future<Map<K, V>?> invokeMapMethod<K, V>(
+  _i22.Future<Map<K, V>?> invokeMapMethod<K, V>(
     String? method, [
     dynamic arguments,
   ]) =>
@@ -328,12 +517,12 @@ class MockMethodChannel extends _i1.Mock implements _i9.MethodChannel {
             arguments,
           ],
         ),
-        returnValue: _i7.Future<Map<K, V>?>.value(),
-        returnValueForMissingStub: _i7.Future<Map<K, V>?>.value(),
-      ) as _i7.Future<Map<K, V>?>);
+        returnValue: _i22.Future<Map<K, V>?>.value(),
+        returnValueForMissingStub: _i22.Future<Map<K, V>?>.value(),
+      ) as _i22.Future<Map<K, V>?>);
   @override
   void setMethodCallHandler(
-          _i7.Future<dynamic> Function(_i4.MethodCall)? handler) =>
+          _i22.Future<dynamic> Function(_i4.MethodCall)? handler) =>
       super.noSuchMethod(
         Invocation.method(
           #setMethodCallHandler,
@@ -341,4 +530,372 @@ class MockMethodChannel extends _i1.Mock implements _i9.MethodChannel {
         ),
         returnValueForMissingStub: null,
       );
+}
+
+/// A class which mocks [TrailWrapper].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTrailWrapper extends _i1.Mock implements _i25.TrailWrapper {
+  @override
+  _i6.TitleWrapper get title => (super.noSuchMethod(
+        Invocation.getter(#title),
+        returnValue: _FakeTitleWrapper_4(
+          this,
+          Invocation.getter(#title),
+        ),
+        returnValueForMissingStub: _FakeTitleWrapper_4(
+          this,
+          Invocation.getter(#title),
+        ),
+      ) as _i6.TitleWrapper);
+  @override
+  set title(_i6.TitleWrapper? _title) => super.noSuchMethod(
+        Invocation.setter(
+          #title,
+          _title,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i7.LicenseWrapper get license => (super.noSuchMethod(
+        Invocation.getter(#license),
+        returnValue: _FakeLicenseWrapper_5(
+          this,
+          Invocation.getter(#license),
+        ),
+        returnValueForMissingStub: _FakeLicenseWrapper_5(
+          this,
+          Invocation.getter(#license),
+        ),
+      ) as _i7.LicenseWrapper);
+  @override
+  set license(_i7.LicenseWrapper? _license) => super.noSuchMethod(
+        Invocation.setter(
+          #license,
+          _license,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i8.PayableWrapper get payable => (super.noSuchMethod(
+        Invocation.getter(#payable),
+        returnValue: _FakePayableWrapper_6(
+          this,
+          Invocation.getter(#payable),
+        ),
+        returnValueForMissingStub: _FakePayableWrapper_6(
+          this,
+          Invocation.getter(#payable),
+        ),
+      ) as _i8.PayableWrapper);
+  @override
+  set payable(_i8.PayableWrapper? _payable) => super.noSuchMethod(
+        Invocation.setter(
+          #payable,
+          _payable,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i9.ReceiptWrapper get receipt => (super.noSuchMethod(
+        Invocation.getter(#receipt),
+        returnValue: _FakeReceiptWrapper_7(
+          this,
+          Invocation.getter(#receipt),
+        ),
+        returnValueForMissingStub: _FakeReceiptWrapper_7(
+          this,
+          Invocation.getter(#receipt),
+        ),
+      ) as _i9.ReceiptWrapper);
+  @override
+  set receipt(_i9.ReceiptWrapper? _receipt) => super.noSuchMethod(
+        Invocation.setter(
+          #receipt,
+          _receipt,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i10.RspAddress get address => (super.noSuchMethod(
+        Invocation.getter(#address),
+        returnValue: _FakeRspAddress_8(
+          this,
+          Invocation.getter(#address),
+        ),
+        returnValueForMissingStub: _FakeRspAddress_8(
+          this,
+          Invocation.getter(#address),
+        ),
+      ) as _i10.RspAddress);
+  @override
+  _i11.RspId get id => (super.noSuchMethod(
+        Invocation.getter(#id),
+        returnValue: _FakeRspId_9(
+          this,
+          Invocation.getter(#id),
+        ),
+        returnValueForMissingStub: _FakeRspId_9(
+          this,
+          Invocation.getter(#id),
+        ),
+      ) as _i11.RspId);
+  @override
+  _i12.RspIsInitialized get isInitialized => (super.noSuchMethod(
+        Invocation.getter(#isInitialized),
+        returnValue: _FakeRspIsInitialized_10(
+          this,
+          Invocation.getter(#isInitialized),
+        ),
+        returnValueForMissingStub: _FakeRspIsInitialized_10(
+          this,
+          Invocation.getter(#isInitialized),
+        ),
+      ) as _i12.RspIsInitialized);
+  @override
+  _i22.Future<_i13.RspInitialized> initialize(
+    String? id,
+    String? publishingId,
+    String? origin,
+    _i16.TikiIdp? idp,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #initialize,
+          [
+            id,
+            publishingId,
+            origin,
+            idp,
+          ],
+        ),
+        returnValue:
+            _i22.Future<_i13.RspInitialized>.value(_FakeRspInitialized_11(
+          this,
+          Invocation.method(
+            #initialize,
+            [
+              id,
+              publishingId,
+              origin,
+              idp,
+            ],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i22.Future<_i13.RspInitialized>.value(_FakeRspInitialized_11(
+          this,
+          Invocation.method(
+            #initialize,
+            [
+              id,
+              publishingId,
+              origin,
+              idp,
+            ],
+          ),
+        )),
+      ) as _i22.Future<_i13.RspInitialized>);
+  @override
+  _i14.RspGuard guard(_i26.ReqGuard? req) => (super.noSuchMethod(
+        Invocation.method(
+          #guard,
+          [req],
+        ),
+        returnValue: _FakeRspGuard_12(
+          this,
+          Invocation.method(
+            #guard,
+            [req],
+          ),
+        ),
+        returnValueForMissingStub: _FakeRspGuard_12(
+          this,
+          Invocation.method(
+            #guard,
+            [req],
+          ),
+        ),
+      ) as _i14.RspGuard);
+}
+
+/// A class which mocks [IdpWrapper].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIdpWrapper extends _i1.Mock implements _i27.IdpWrapper {
+  @override
+  _i15.RspIsInitialized get isInitialized => (super.noSuchMethod(
+        Invocation.getter(#isInitialized),
+        returnValue: _FakeRspIsInitialized_13(
+          this,
+          Invocation.getter(#isInitialized),
+        ),
+        returnValueForMissingStub: _FakeRspIsInitialized_13(
+          this,
+          Invocation.getter(#isInitialized),
+        ),
+      ) as _i15.RspIsInitialized);
+  @override
+  _i16.TikiIdp initialize(
+    String? clientId, {
+    List<String>? scope,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #initialize,
+          [clientId],
+          {#scope: scope},
+        ),
+        returnValue: _FakeTikiIdp_14(
+          this,
+          Invocation.method(
+            #initialize,
+            [clientId],
+            {#scope: scope},
+          ),
+        ),
+        returnValueForMissingStub: _FakeTikiIdp_14(
+          this,
+          Invocation.method(
+            #initialize,
+            [clientId],
+            {#scope: scope},
+          ),
+        ),
+      ) as _i16.TikiIdp);
+  @override
+  _i22.Future<_i17.RspDefault> key(_i28.ReqKey? req) => (super.noSuchMethod(
+        Invocation.method(
+          #key,
+          [req],
+        ),
+        returnValue: _i22.Future<_i17.RspDefault>.value(_FakeRspDefault_15(
+          this,
+          Invocation.method(
+            #key,
+            [req],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i22.Future<_i17.RspDefault>.value(_FakeRspDefault_15(
+          this,
+          Invocation.method(
+            #key,
+            [req],
+          ),
+        )),
+      ) as _i22.Future<_i17.RspDefault>);
+  @override
+  _i22.Future<_i18.RspExport> export(_i29.ReqExport? req) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #export,
+          [req],
+        ),
+        returnValue: _i22.Future<_i18.RspExport>.value(_FakeRspExport_16(
+          this,
+          Invocation.method(
+            #export,
+            [req],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i22.Future<_i18.RspExport>.value(_FakeRspExport_16(
+          this,
+          Invocation.method(
+            #export,
+            [req],
+          ),
+        )),
+      ) as _i22.Future<_i18.RspExport>);
+  @override
+  _i22.Future<_i17.RspDefault> import(_i30.ReqImport? req) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #import,
+          [req],
+        ),
+        returnValue: _i22.Future<_i17.RspDefault>.value(_FakeRspDefault_15(
+          this,
+          Invocation.method(
+            #import,
+            [req],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i22.Future<_i17.RspDefault>.value(_FakeRspDefault_15(
+          this,
+          Invocation.method(
+            #import,
+            [req],
+          ),
+        )),
+      ) as _i22.Future<_i17.RspDefault>);
+  @override
+  _i22.Future<_i19.RspSign> sign(_i31.ReqSign? req) => (super.noSuchMethod(
+        Invocation.method(
+          #sign,
+          [req],
+        ),
+        returnValue: _i22.Future<_i19.RspSign>.value(_FakeRspSign_17(
+          this,
+          Invocation.method(
+            #sign,
+            [req],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i22.Future<_i19.RspSign>.value(_FakeRspSign_17(
+          this,
+          Invocation.method(
+            #sign,
+            [req],
+          ),
+        )),
+      ) as _i22.Future<_i19.RspSign>);
+  @override
+  _i22.Future<_i20.RspVerify> verify(_i32.ReqVerify? req) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #verify,
+          [req],
+        ),
+        returnValue: _i22.Future<_i20.RspVerify>.value(_FakeRspVerify_18(
+          this,
+          Invocation.method(
+            #verify,
+            [req],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i22.Future<_i20.RspVerify>.value(_FakeRspVerify_18(
+          this,
+          Invocation.method(
+            #verify,
+            [req],
+          ),
+        )),
+      ) as _i22.Future<_i20.RspVerify>);
+  @override
+  _i22.Future<_i21.RspToken> token() => (super.noSuchMethod(
+        Invocation.method(
+          #token,
+          [],
+        ),
+        returnValue: _i22.Future<_i21.RspToken>.value(_FakeRspToken_19(
+          this,
+          Invocation.method(
+            #token,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i22.Future<_i21.RspToken>.value(_FakeRspToken_19(
+          this,
+          Invocation.method(
+            #token,
+            [],
+          ),
+        )),
+      ) as _i22.Future<_i21.RspToken>);
 }

@@ -25,19 +25,22 @@ class Channel {
   final IdpWrapper _idp;
   final TrailWrapper _trail;
 
-  late final RspHandler _rsp = RspHandler(_channel);
-  late final IdpHandler _idpHandler = IdpHandler(_idp, _rsp);
-  late final TrailHandler _trailHandler = TrailHandler(_trail, _rsp);
+  late final RspHandler _rsp;
+  late final IdpHandler _idpHandler;
+  late final TrailHandler _trailHandler;
 
-  Channel({IdpWrapper? idp, TrailWrapper? trail})
+  Channel({IdpWrapper? idp, TrailWrapper? trail, RspHandler? rsp})
       : _idp = idp ?? IdpWrapper(),
         _trail = trail ?? TrailWrapper() {
+    _rsp = rsp ?? RspHandler(_channel);
+    _idpHandler = IdpHandler(_idp, _rsp);
+    _trailHandler = TrailHandler(_trail, _rsp);
     _channel.setMethodCallHandler(handler);
   }
 
   Future<void> handler(MethodCall call) async {
     switch (call.method) {
-      case "initialize":
+      case "$name.initialize":
         ReqInitialize req = ReqInitialize.from(call.arguments);
         TikiIdp idp = _idp.initialize(req.publishingId!);
         await _rsp.handle(

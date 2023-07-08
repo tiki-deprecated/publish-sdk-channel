@@ -6,10 +6,10 @@
 import '../../rsp.dart';
 
 class RspInitialized extends Rsp {
-  final String? id;
-  final String? address;
+  final String id;
+  final String address;
 
-  RspInitialized({this.id, this.address, String? requestId}) : super(requestId);
+  RspInitialized(this.id, this.address, {String? requestId}) : super(requestId);
 
   @override
   Map<String, dynamic> toMap() =>

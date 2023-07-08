@@ -52,7 +52,7 @@ class TrailWrapper {
     payable = PayableWrapper(_trail!);
     receipt = ReceiptWrapper(_trail!);
 
-    return RspInitialized(address: key.address, id: key.id);
+    return RspInitialized(key.id, key.address);
   }
 
   RspAddress get address => RspAddress(_trail!.address);

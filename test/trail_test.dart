@@ -384,6 +384,12 @@ void main() {
       await handler
           .handler(MethodCall("com.mytiki.sdk.trail.receipt.all", req));
     });
+  });
+
+  group('handler - other', () {
+    setUp(() {
+      mc_fixture.throwOnError();
+    });
 
     test('no_handler', () async {
       Map req = mc_fixture.request();

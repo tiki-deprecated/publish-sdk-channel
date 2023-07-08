@@ -33,8 +33,9 @@ class ReqLicense extends Req {
       expiry = DateTime.fromMillisecondsSinceEpoch(map!["expiry"]);
     }
     if (map?["uses"] != null) {
-      uses =
-          (map!["uses"] as List).map((use) => LicenseUse.fromMap(use)).toList();
+      uses = (map!["uses"] as List)
+          .map((use) => LicenseUse.fromMap(Map<String, dynamic>.from(use)))
+          .toList();
     }
   }
 }

@@ -26,11 +26,10 @@ class MockTikiTrail extends Mock implements TikiTrail {
 
   @override
   String get address =>
-      super.noSuchMethod(Invocation.getter(#address), returnValue: "mockme");
+      super.noSuchMethod(Invocation.getter(#address), returnValue: "");
 
   @override
-  String get id =>
-      super.noSuchMethod(Invocation.getter(#id), returnValue: "mockme");
+  String get id => super.noSuchMethod(Invocation.getter(#id), returnValue: "");
 
   @override
   bool guard(String ptr, List<LicenseUsecase>? usecases,

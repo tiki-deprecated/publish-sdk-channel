@@ -12,7 +12,8 @@ import 'package:tiki_idp/tiki_idp.dart';
 
 import 'idp/idp_handler.dart';
 import 'idp/idp_wrapper.dart';
-import 'req_init.dart';
+import 'req_default.dart';
+import 'req_initialize.dart';
 import 'rsp_error.dart';
 import 'rsp_handler.dart';
 import 'trail/trail_handler.dart';
@@ -35,14 +36,14 @@ class Channel {
   }
 
   Future<void> handler(MethodCall call) async {
-    String jsonReq = call.arguments['request'];
-    String requestId = call.arguments['requestId'];
     switch (call.method) {
       case "initialize":
-        ReqInit req = ReqInit.fromJson(jsonReq);
-        TikiIdp idp = _idp.initialize(req.publishingId);
-        await _rsp.handle(requestId,
-            () => _trail.initialize(req.id, req.publishingId, req.origin, idp));
+        ReqInitialize req = ReqInitialize.from(call.arguments);
+        TikiIdp idp = _idp.initialize(req.publishingId!);
+        await _rsp.handle(
+            req.requestId!,
+            () => _trail.initialize(
+                req.id!, req.publishingId!, req.origin!, idp));
         break;
       default:
         if (call.method.startsWith("idp.")) {
@@ -50,8 +51,9 @@ class Channel {
         } else if (call.method.startsWith("trail.")) {
           await _trailHandler.handler(call);
         } else {
+          ReqDefault req = ReqDefault.from(call.arguments);
           await _rsp.error(RspError(
-              requestId: requestId,
+              requestId: req.requestId,
               message: 'no method handler for method ${call.method}',
               stackTrace: StackTrace.current));
         }

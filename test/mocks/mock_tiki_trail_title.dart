@@ -7,6 +7,8 @@ import 'package:mockito/mockito.dart';
 import 'package:tiki_trail/tiki_trail.dart';
 
 class MockTikiTrailTitle extends Mock implements Title {
+  static final TitleRecord dummy = TitleRecord("", "");
+
   @override
   Future<TitleRecord> create(String ptr,
           {String? origin, List<TitleTag>? tags, String? description}) =>
@@ -18,5 +20,5 @@ class MockTikiTrailTitle extends Mock implements Title {
             const Symbol("tags"): tags,
             const Symbol("description"): description,
           }),
-          returnValue: Future.value(TitleRecord("mockme", "mockme")));
+          returnValue: Future.value(dummy));
 }

@@ -34,7 +34,9 @@ class KeyFlutter implements KeyPlatform {
     FortunaRandom secureRandom = FortunaRandom();
     Random random = Random.secure();
     final seeds = <int>[];
-    for (int i = 0; i < 32; i++) seeds.add(random.nextInt(255));
+    for (int i = 0; i < 32; i++) {
+      seeds.add(random.nextInt(255));
+    }
     secureRandom.seed(KeyParameter(Uint8List.fromList(seeds)));
     final keyGen = RSAKeyGenerator()
       ..init(ParametersWithRandom(

@@ -9,12 +9,12 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:tiki_idp/tiki_idp.dart';
-import 'package:tiki_sdk_platform_channel/src/idp/idp_wrapper.dart';
-import 'package:tiki_sdk_platform_channel/src/req_init.dart';
-import 'package:tiki_sdk_platform_channel/src/rsp_handler.dart';
 
 import 'idp/idp_handler.dart';
+import 'idp/idp_wrapper.dart';
+import 'req_init.dart';
 import 'rsp_error.dart';
+import 'rsp_handler.dart';
 import 'trail/trail_handler.dart';
 import 'trail/trail_wrapper.dart';
 

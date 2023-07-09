@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - closed
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -13,7 +11,7 @@ concurrency:
 
 jobs:
   version:
-    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'release/')
+    if: startsWith(github.head_ref, 'release/')
     environment: Production
     runs-on: ubuntu-latest
     outputs:

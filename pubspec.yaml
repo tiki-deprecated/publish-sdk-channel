@@ -1,6 +1,6 @@
 name: tiki_sdk_native
 description: Use TIKI's dart libs in native projects
-version: 1.0.11
+version: 2.0.0
 homepage: https://mytiki.com
 documentation: https://mytiki.com/docs
 repository: https://github.com/tiki/tiki-sdk-platform-channel

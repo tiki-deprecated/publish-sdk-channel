@@ -1,3 +1,8 @@
+## 2.0.0
+* update API to support tiki_trail v3.x
+* add support for tiki_idp
+* add API for tiki_idp methods 
+
 ## 1.0.11
 * minor bug fixes 
 

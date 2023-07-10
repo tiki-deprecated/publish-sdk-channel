@@ -657,6 +657,7 @@ class MockTrailWrapper extends _i1.Mock implements _i25.TrailWrapper {
     String? id,
     String? publishingId,
     String? origin,
+    String? dir,
     _i16.TikiIdp? idp,
   ) =>
       (super.noSuchMethod(
@@ -666,6 +667,7 @@ class MockTrailWrapper extends _i1.Mock implements _i25.TrailWrapper {
             id,
             publishingId,
             origin,
+            dir,
             idp,
           ],
         ),
@@ -678,6 +680,7 @@ class MockTrailWrapper extends _i1.Mock implements _i25.TrailWrapper {
               id,
               publishingId,
               origin,
+              dir,
               idp,
             ],
           ),
@@ -691,6 +694,7 @@ class MockTrailWrapper extends _i1.Mock implements _i25.TrailWrapper {
               id,
               publishingId,
               origin,
+              dir,
               idp,
             ],
           ),

@@ -34,15 +34,21 @@ void main() {
       String publishingId = const Uuid().v4();
       String origin = const Uuid().v4();
       String address = const Uuid().v4();
+      String dir = const Uuid().v4();
       TikiIdp tikiIdp = TikiIdp([], "", KeyFlutter());
 
       when(idp.initialize(any)).thenReturn(tikiIdp);
-      when(trail.initialize(id, publishingId, origin, tikiIdp)).thenAnswer((_) {
+      when(trail.initialize(id, publishingId, origin, dir, tikiIdp))
+          .thenAnswer((_) {
         return Future.value(RspInitialized(id, address));
       });
 
-      Map req = mc_fixture.request(
-          body: {"publishingId": publishingId, "origin": origin, "id": id});
+      Map req = mc_fixture.request(body: {
+        "publishingId": publishingId,
+        "origin": origin,
+        "id": id,
+        "dir": dir
+      });
       mc_fixture.expect((rsp) {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["id"], id);

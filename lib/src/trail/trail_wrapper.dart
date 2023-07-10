@@ -3,7 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'package:path_provider/path_provider.dart';
+import 'dart:io';
+
 import 'package:sqlite3/common.dart';
 import 'package:sqlite3/sqlite3.dart';
 import 'package:tiki_idp/tiki_idp.dart';
@@ -37,15 +38,13 @@ class TrailWrapper {
     }
   }
 
-  Future<RspInitialized> initialize(
-      String id, String publishingId, String origin, TikiIdp idp) async {
+  Future<RspInitialized> initialize(String id, String publishingId,
+      String origin, String dir, TikiIdp idp) async {
     Key key = await TikiTrail.withId(id, idp);
-
-    final dir = await getApplicationDocumentsDirectory();
-    if (!await dir.exists()) await dir.create(recursive: true);
+    Directory directory = Directory(dir);
+    if (!await directory.exists()) await directory.create(recursive: true);
     String dbFile = "$dir/${key.address}.db";
     CommonDatabase database = sqlite3.open(dbFile);
-
     _trail = await TikiTrail.init(publishingId, origin, idp, key, database);
     license = LicenseWrapper(_trail!);
     title = TitleWrapper(_trail!);

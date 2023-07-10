@@ -62,14 +62,6 @@ jobs:
         with:
           xcode-version: latest-stable
 
-      - name: 'Remove unecessary dependencies for native libs'
-        run: |
-          perl -i -p0e 's/  integration_test:\n    sdk: flutter//s' pubspec.yaml
-          perl -i -p0e 's/  path_provider: \^2\.0\.14//s' pubspec.yaml
-          perl -i -p0e 's/  sqlite3_flutter_libs: \^0\.5\.13//s' pubspec.yaml
-          perl -i -p0e 's/  uuid: \^3\.0\.7//s' pubspec.yaml
-          cat pubspec.yaml
-
       - name: 'Flutter pub get'
         run: |
           flutter pub get
@@ -94,6 +86,10 @@ jobs:
           shasum -a 256 Flutter.xcframework.zip | cut -f1 -d' '>> Flutter.checksum.txt
           zip -r FlutterPluginRegistrant.xcframework.zip FlutterPluginRegistrant.xcframework
           shasum -a 256 FlutterPluginRegistrant.xcframework.zip | cut -f1 -d' '>> FlutterPluginRegistrant.checksum.txt
+          zip -r sqlite3.xcframework.zip sqlite3.xcframework
+          shasum -a 256 sqlite3.xcframework.zip | cut -f1 -d' '>> sqlite3.checksum.txt
+          zip -r sqlite3_flutter_libs.xcframework.zip sqlite3_flutter_libs.xcframework
+          shasum -a 256 sqlite3_flutter_libs.xcframework.zip | cut -f1 -d' '>> sqlite3_flutter_libs.checksum.txt
 
       - name: "Zip debug frameworks"
         run: |
@@ -106,6 +102,10 @@ jobs:
           shasum -a 256 Flutter_debug.xcframework.zip | cut -f1 -d' '>> Flutter_debug.checksum.txt
           zip -r FlutterPluginRegistrant_debug.xcframework.zip FlutterPluginRegistrant.xcframework
           shasum -a 256 FlutterPluginRegistrant_debug.xcframework.zip | cut -f1 -d' '>> FlutterPluginRegistrant_debug.checksum.txt
+          zip -r sqlite3_debug.xcframework.zip sqlite3.xcframework
+          shasum -a 256 sqlite3_debug.xcframework.zip | cut -f1 -d' '>> sqlite3_debug.checksum.txt
+          zip -r sqlite3_flutter_libs_debug.xcframework.zip sqlite3_flutter_libs.xcframework
+          shasum -a 256 sqlite3_flutter_libs_debug.xcframework.zip | cut -f1 -d' '>> sqlite3_flutter_libs_debug.checksum.txt
 
       - name: Publish
         uses: ncipollo/release-action@v1
@@ -139,13 +139,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-
-      - name: 'Remove unecessary dependencies for native libs'
-        run: |
-          perl -i -p0e 's/  integration_test:\n    sdk: flutter//s' pubspec.yaml
-          perl -i -p0e 's/  path_provider: \^2\.0\.14//s' pubspec.yaml
-          perl -i -p0e 's/  uuid: \^3\.0\.7//s' pubspec.yaml
-          cat pubspec.yaml
 
       - name: 'Flutter Pub Get'
         run: |

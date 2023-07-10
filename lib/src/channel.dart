@@ -46,7 +46,7 @@ class Channel {
         await _rsp.handle(
             req.requestId!,
             () => _trail.initialize(
-                req.id!, req.publishingId!, req.origin!, idp));
+                req.id!, req.publishingId!, req.origin!, req.dir!, idp));
         break;
       default:
         if (call.method.startsWith("idp.")) {

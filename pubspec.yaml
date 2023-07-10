@@ -1,10 +1,10 @@
 name: tiki_sdk_native
 description: Use TIKI's dart libs in native projects
-version: 2.0.2
+version: 2.0.3
 homepage: https://mytiki.com
 documentation: https://mytiki.com/docs
-repository: https://github.com/tiki/tiki-sdk-platform-channel
-issue_tracker: https://github.com/tiki/tiki-sdk-platform-channel/issues
+repository: https://github.com/tiki/tiki_sdk_native
+issue_tracker: https://github.com/tiki/tiki_sdk_native/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -30,5 +30,5 @@ dev_dependencies:
 flutter:
   module:
     androidX: true
-    androidPackage: com.mytiki.tiki_sdk_platform_channel
-    iosBundleIdentifier: com.mytiki.tiki_sdk_platform_channel
+    androidPackage: com.mytiki.tiki_sdk_native
+    iosBundleIdentifier: com.mytiki.tiki_sdk_native

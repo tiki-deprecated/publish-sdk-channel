@@ -144,6 +144,12 @@ jobs:
         run: |
           flutter pub get
 
+      - name: 'Set app/build.gradle versions'
+        run: |
+          perl -i -p0e 's/compileSdkVersion 31/compileSdkVersion 33/g' .android/app/build.gradle
+          perl -i -p0e 's/minSdkVersion 16/minSdkVersion 18/g' .android/app/build.gradle
+          perl -i -p0e 's/targetSdkVersion 31/targetSdkVersion 33/g' .android/app/build.gradle
+
       - name: 'Flutter Build AAR'
         run: |
           flutter build aar

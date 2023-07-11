@@ -1,8 +1,3 @@
-/*
- * Copyright (c) TIKI Inc.
- * MIT license. See LICENSE file in root directory.
- */
-
 apply plugin: 'maven-publish'
 project.getGradle().projectsEvaluated {
     allprojects {

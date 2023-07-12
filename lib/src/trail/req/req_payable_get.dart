@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import '../../req.dart';
 
 class ReqPayableGet extends Req {
@@ -10,7 +12,7 @@ class ReqPayableGet extends Req {
 
   ReqPayableGet({this.id, String? requestId}) : super(requestId);
 
-  ReqPayableGet.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    id = map?["id"];
+  ReqPayableGet.from(MethodCall call) : super(call.arguments["requestId"]) {
+    id = call.arguments["id"];
   }
 }

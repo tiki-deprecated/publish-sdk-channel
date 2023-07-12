@@ -3,6 +3,7 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
 import 'package:tiki_trail/cache/license/license_usecase.dart';
 
 import '../../req.dart';
@@ -21,21 +22,21 @@ class ReqGuard extends Req {
       String? requestId})
       : super(requestId);
 
-  ReqGuard.from(Map<String, dynamic>? map)
+  ReqGuard.from(MethodCall call)
       : usecases = const [],
-        super(map?["requestId"]) {
-    ptr = map?["ptr"];
-    if (map?["destinations"] != null) {
-      destinations = map?["destinations"]
+        super(call.arguments["requestId"]) {
+    ptr = call.arguments["ptr"];
+    if (call.arguments["destinations"] != null) {
+      destinations = call.arguments["destinations"]
           .map<String>((destination) => destination.toString())
           .toList();
     }
-    if (map?["destinations"] != null) {
-      usecases = map!["usecases"]
+    if (call.arguments["destinations"] != null) {
+      usecases = call.arguments["usecases"]
           .map<LicenseUsecase>(
               (usecase) => LicenseUsecase.from(usecase.toString()))
           .toList();
     }
-    origin = map?["origin"];
+    origin = call.arguments["origin"];
   }
 }

@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import '../../req.dart';
 
 class ReqReceipt extends Req {
@@ -19,10 +21,10 @@ class ReqReceipt extends Req {
       String? requestId})
       : super(requestId);
 
-  ReqReceipt.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    payableId = map?["payableId"];
-    amount = map?["amount"];
-    description = map?["description"];
-    reference = map?["reference"];
+  ReqReceipt.from(MethodCall call) : super(call.arguments["requestId"]) {
+    payableId = call.arguments["payableId"];
+    amount = call.arguments["amount"];
+    description = call.arguments["description"];
+    reference = call.arguments["reference"];
   }
 }

@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import '../../req.dart';
 
 class ReqKey extends Req {
@@ -12,8 +14,8 @@ class ReqKey extends Req {
   ReqKey({this.keyId, this.overwrite = false, String? requestId})
       : super(requestId);
 
-  ReqKey.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    keyId = map?["keyId"];
-    overwrite = map?["overwrite"];
+  ReqKey.from(MethodCall call) : super(call.arguments["requestId"]) {
+    keyId = call.arguments["keyId"];
+    overwrite = call.arguments["overwrite"];
   }
 }

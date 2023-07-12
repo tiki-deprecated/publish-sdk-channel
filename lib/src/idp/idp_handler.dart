@@ -26,36 +26,36 @@ class IdpHandler {
   Future<void> handler(MethodCall call) async {
     switch (call.method) {
       case "$name.isInitialized":
-        ReqDefault req = ReqDefault.from(call.arguments);
+        ReqDefault req = ReqDefault.from(call);
         await _rsp.handle(
             req.requestId!, () => Future.value(_idp.isInitialized));
         break;
       case "$name.key":
-        ReqKey req = ReqKey.from(call.arguments);
+        ReqKey req = ReqKey.from(call);
         await _rsp.handle(req.requestId!, () => _idp.key(req));
         break;
       case "$name.export":
-        ReqExport req = ReqExport.from(call.arguments);
+        ReqExport req = ReqExport.from(call);
         await _rsp.handle(req.requestId!, () => _idp.export(req));
         break;
       case "$name.import":
-        ReqImport req = ReqImport.from(call.arguments);
+        ReqImport req = ReqImport.from(call);
         await _rsp.handle(req.requestId!, () => _idp.import(req));
         break;
       case "$name.sign":
-        ReqSign req = ReqSign.from(call.arguments);
+        ReqSign req = ReqSign.from(call);
         await _rsp.handle(req.requestId!, () => _idp.sign(req));
         break;
       case "$name.verify":
-        ReqVerify req = ReqVerify.from(call.arguments);
+        ReqVerify req = ReqVerify.from(call);
         await _rsp.handle(req.requestId!, () => _idp.verify(req));
         break;
       case "$name.token":
-        ReqDefault req = ReqDefault.from(call.arguments);
+        ReqDefault req = ReqDefault.from(call);
         await _rsp.handle(req.requestId!, () => _idp.token());
         break;
       default:
-        ReqDefault req = ReqDefault.from(call.arguments);
+        ReqDefault req = ReqDefault.from(call);
         await _rsp.error(RspError(
             requestId: req.requestId!,
             message: 'no method handler for method ${call.method}',

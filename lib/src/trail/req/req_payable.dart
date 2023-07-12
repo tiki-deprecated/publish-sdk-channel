@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import '../../req.dart';
 
 class ReqPayable extends Req {
@@ -23,14 +25,14 @@ class ReqPayable extends Req {
       String? requestId})
       : super(requestId);
 
-  ReqPayable.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    licenseId = map?["licenseId"];
-    amount = map?["amount"];
-    type = map?["type"];
-    description = map?["description"];
-    reference = map?["reference"];
-    if (map?["expiry"] != null) {
-      expiry = DateTime.fromMillisecondsSinceEpoch(map!["expiry"]);
+  ReqPayable.from(MethodCall call) : super(call.arguments["requestId"]) {
+    licenseId = call.arguments["licenseId"];
+    amount = call.arguments["amount"];
+    type = call.arguments["type"];
+    description = call.arguments["description"];
+    reference = call.arguments["reference"];
+    if (call.arguments["expiry"] != null) {
+      expiry = DateTime.fromMillisecondsSinceEpoch(call.arguments["expiry"]);
     }
   }
 }

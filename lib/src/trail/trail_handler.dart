@@ -5,7 +5,6 @@
 
 import 'package:flutter/services.dart';
 
-import '../channel.dart';
 import '../req_default.dart';
 import '../rsp_error.dart';
 import '../rsp_handler.dart';
@@ -25,7 +24,7 @@ import 'req/req_title_id.dart';
 import 'trail_wrapper.dart';
 
 class TrailHandler {
-  static const name = "${Channel.name}.trail";
+  static const name = "trail";
   final TrailWrapper _trail;
   late final RspHandler _rsp;
 

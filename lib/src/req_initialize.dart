@@ -18,8 +18,8 @@ class ReqInitialize extends Req {
       : super(requestId);
 
   ReqInitialize.from(MethodCall call) : super(call.arguments["requestId"]) {
-    publishingId = call.arguments['publishingId']!;
-    origin = call.arguments['origin']!;
+    publishingId = call.arguments['publishingId'];
+    origin = call.arguments['origin'];
     id = call.arguments['id'];
     dir = call.arguments['dir'];
   }

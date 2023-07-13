@@ -40,7 +40,7 @@ class Channel {
 
   Future<void> handler(MethodCall call) async {
     switch (call.method) {
-      case "$name.initialize":
+      case "initialize":
         ReqInitialize req = ReqInitialize.from(call);
         TikiIdp idp = _idp.initialize(req.publishingId!);
         await _rsp.handle(

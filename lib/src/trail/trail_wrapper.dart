@@ -29,8 +29,9 @@ class TrailWrapper {
   late final PayableWrapper payable;
   late final ReceiptWrapper receipt;
 
-  TrailWrapper({TikiTrail? trail}) : _trail = trail {
-    if (_trail != null) {
+  TrailWrapper({TikiTrail? trail}) {
+    if (trail != null) {
+      trail = _trail;
       license = LicenseWrapper(_trail!);
       title = TitleWrapper(_trail!);
       payable = PayableWrapper(_trail!);
@@ -50,7 +51,6 @@ class TrailWrapper {
     title = TitleWrapper(_trail!);
     payable = PayableWrapper(_trail!);
     receipt = ReceiptWrapper(_trail!);
-
     return RspInitialized(key.id, key.address);
   }
 

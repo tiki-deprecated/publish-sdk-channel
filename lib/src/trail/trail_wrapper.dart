@@ -31,7 +31,7 @@ class TrailWrapper {
 
   TrailWrapper({TikiTrail? trail}) {
     if (trail != null) {
-      trail = _trail;
+      _trail = trail;
       license = LicenseWrapper(_trail!);
       title = TitleWrapper(_trail!);
       payable = PayableWrapper(_trail!);

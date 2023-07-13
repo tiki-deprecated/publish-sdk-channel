@@ -31,8 +31,7 @@ void main() {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["isInitialized"], true);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.isInitialized", req));
+      await handler.handler(MethodCall("trail.isInitialized", req));
     });
 
     test('address', () async {
@@ -43,7 +42,7 @@ void main() {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["address"], address);
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.trail.address", req));
+      await handler.handler(MethodCall("trail.address", req));
     });
 
     test('id', () async {
@@ -54,7 +53,7 @@ void main() {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["id"], id);
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.trail.id", req));
+      await handler.handler(MethodCall("trail.id", req));
     });
 
     test('guard', () async {
@@ -71,7 +70,7 @@ void main() {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["success"], true);
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.trail.guard", req));
+      await handler.handler(MethodCall("trail.guard", req));
     });
   });
 
@@ -92,8 +91,7 @@ void main() {
         expect(rsp["id"], id);
         expect(rsp["hashedPtr"], ptr);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.title.create", req));
+      await handler.handler(MethodCall("trail.title.create", req));
     });
 
     test('title.get', () async {
@@ -106,7 +104,7 @@ void main() {
         expect(rsp["id"], id);
         expect(rsp["hashedPtr"], ptr);
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.trail.title.get", req));
+      await handler.handler(MethodCall("trail.title.get", req));
     });
 
     test('title.id', () async {
@@ -119,7 +117,7 @@ void main() {
         expect(rsp["id"], id);
         expect(rsp["hashedPtr"], ptr);
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.trail.title.id", req));
+      await handler.handler(MethodCall("trail.title.id", req));
     });
   });
 
@@ -157,8 +155,7 @@ void main() {
         expect(use.destinations?[0], uses[0].destinations?[0]);
         expect(rsp["terms"], terms);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.license.create", req));
+      await handler.handler(MethodCall("trail.license.create", req));
     });
 
     test('license.get', () async {
@@ -179,8 +176,7 @@ void main() {
         expect((rsp["uses"] as List).length, 0);
         expect(rsp["terms"], terms);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.license.get", req));
+      await handler.handler(MethodCall("trail.license.get", req));
     });
 
     test('license.all', () async {
@@ -200,8 +196,7 @@ void main() {
         expect((rsp["licenses"] as List).length, 1);
         expect(rsp["licenses"][0]["id"], id);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.license.all", req));
+      await handler.handler(MethodCall("trail.license.all", req));
     });
   });
 
@@ -235,8 +230,7 @@ void main() {
         expect(rsp["amount"], amount);
         expect(rsp["type"], type);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.payable.create", req));
+      await handler.handler(MethodCall("trail.payable.create", req));
     });
 
     test('payable.get', () async {
@@ -262,8 +256,7 @@ void main() {
         expect(rsp["amount"], amount);
         expect(rsp["type"], type);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.payable.get", req));
+      await handler.handler(MethodCall("trail.payable.get", req));
     });
 
     test('payable.all', () async {
@@ -287,8 +280,7 @@ void main() {
         expect((rsp["payables"] as List).length, 1);
         expect(rsp["payables"][0]["id"], id);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.payable.all", req));
+      await handler.handler(MethodCall("trail.payable.all", req));
     });
   });
 
@@ -324,8 +316,7 @@ void main() {
         expect(rsp["payable"]["id"], payableId);
         expect(rsp["amount"], amount);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.receipt.create", req));
+      await handler.handler(MethodCall("trail.receipt.create", req));
     });
 
     test('receipt.get', () async {
@@ -353,8 +344,7 @@ void main() {
         expect(rsp["payable"]["id"], payableId);
         expect(rsp["amount"], amount);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.receipt.get", req));
+      await handler.handler(MethodCall("trail.receipt.get", req));
     });
 
     test('receipt.all', () async {
@@ -381,8 +371,7 @@ void main() {
         expect((rsp["receipts"] as List).length, 1);
         expect(rsp["receipts"][0]["id"], id);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.trail.receipt.all", req));
+      await handler.handler(MethodCall("trail.receipt.all", req));
     });
   });
 
@@ -394,8 +383,8 @@ void main() {
     test('no_handler', () async {
       Map req = mc_fixture.request();
       expect(
-          () async => await handler.handler(
-              MethodCall("com.mytiki.sdk.trail.${const Uuid().v4()}", req)),
+          () async => await handler
+              .handler(MethodCall("trail.${const Uuid().v4()}", req)),
           throwsA(isA<TestFailure>()));
     });
   });

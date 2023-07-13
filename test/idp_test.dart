@@ -33,8 +33,7 @@ void main() {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["isInitialized"], true);
       });
-      await handler
-          .handler(MethodCall("com.mytiki.sdk.idp.isInitialized", req));
+      await handler.handler(MethodCall("idp.isInitialized", req));
     });
 
     test('key', () async {
@@ -44,7 +43,7 @@ void main() {
       mc_fixture.expect((rsp) {
         expect(rsp["requestId"], mc_fixture.requestId(req));
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.idp.key", req));
+      await handler.handler(MethodCall("idp.key", req));
     });
 
     test('export', () async {
@@ -57,7 +56,7 @@ void main() {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["key"], key);
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.idp.export", req));
+      await handler.handler(MethodCall("idp.export", req));
     });
 
     test('import', () async {
@@ -70,7 +69,7 @@ void main() {
       mc_fixture.expect((rsp) {
         expect(rsp["requestId"], mc_fixture.requestId(req));
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.idp.import", req));
+      await handler.handler(MethodCall("idp.import", req));
     });
 
     test('sign', () async {
@@ -84,7 +83,7 @@ void main() {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["signature"], base64.encode(signature));
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.idp.sign", req));
+      await handler.handler(MethodCall("idp.sign", req));
     });
 
     test('verify', () async {
@@ -102,7 +101,7 @@ void main() {
         expect(rsp["requestId"], mc_fixture.requestId(req));
         expect(rsp["isVerified"], true);
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.idp.verify", req));
+      await handler.handler(MethodCall("idp.verify", req));
     });
 
     test('token', () async {
@@ -127,14 +126,14 @@ void main() {
           expect(scopeList.contains(scp), true);
         }
       });
-      await handler.handler(MethodCall("com.mytiki.sdk.idp.token", req));
+      await handler.handler(MethodCall("idp.token", req));
     });
 
     test('no_handler', () async {
       Map req = mc_fixture.request();
       expect(
-          () async => await handler.handler(
-              MethodCall("com.mytiki.sdk.idp.${const Uuid().v4()}", req)),
+          () async => await handler
+              .handler(MethodCall("idp.${const Uuid().v4()}", req)),
           throwsA(isA<TestFailure>()));
     });
   });

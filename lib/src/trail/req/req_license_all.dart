@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import '../../req.dart';
 
 class ReqLicenseAll extends Req {
@@ -10,7 +12,7 @@ class ReqLicenseAll extends Req {
 
   ReqLicenseAll({this.titleId, String? requestId}) : super(requestId);
 
-  ReqLicenseAll.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    titleId = map?["titleId"];
+  ReqLicenseAll.from(MethodCall call) : super(call.arguments["requestId"]) {
+    titleId = call.arguments["titleId"];
   }
 }

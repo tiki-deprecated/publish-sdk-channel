@@ -32,16 +32,16 @@ class Channel {
   Channel({IdpWrapper? idp, TrailWrapper? trail, RspHandler? rsp})
       : _idp = idp ?? IdpWrapper(),
         _trail = trail ?? TrailWrapper() {
+    _channel.setMethodCallHandler(handler);
     _rsp = rsp ?? RspHandler(_channel);
     _idpHandler = IdpHandler(_idp, _rsp);
     _trailHandler = TrailHandler(_trail, _rsp);
-    _channel.setMethodCallHandler(handler);
   }
 
   Future<void> handler(MethodCall call) async {
     switch (call.method) {
-      case "$name.initialize":
-        ReqInitialize req = ReqInitialize.from(call.arguments);
+      case "initialize":
+        ReqInitialize req = ReqInitialize.from(call);
         TikiIdp idp = _idp.initialize(req.publishingId!);
         await _rsp.handle(
             req.requestId!,
@@ -54,7 +54,7 @@ class Channel {
         } else if (call.method.startsWith("trail.")) {
           await _trailHandler.handler(call);
         } else {
-          ReqDefault req = ReqDefault.from(call.arguments);
+          ReqDefault req = ReqDefault.from(call);
           await _rsp.error(RspError(
               requestId: req.requestId,
               message: 'no method handler for method ${call.method}',

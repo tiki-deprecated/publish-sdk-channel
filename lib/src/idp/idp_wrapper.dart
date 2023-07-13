@@ -23,7 +23,9 @@ import 'rsp/rsp_verify.dart';
 class IdpWrapper {
   late final TikiIdp? _idp;
 
-  IdpWrapper({TikiIdp? idp}) : _idp = idp;
+  IdpWrapper({TikiIdp? idp}) {
+    if (idp != null) _idp = idp;
+  }
 
   TikiIdp initialize(String clientId, {List<String>? scope}) {
     KeyFlutter platform = KeyFlutter();

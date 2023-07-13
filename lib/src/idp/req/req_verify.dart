@@ -4,7 +4,8 @@
  */
 
 import 'dart:convert';
-import 'dart:typed_data';
+
+import 'package:flutter/services.dart';
 
 import '../../req.dart';
 
@@ -16,9 +17,13 @@ class ReqVerify extends Req {
   ReqVerify({this.keyId, this.message, this.signature, String? requestId})
       : super(requestId);
 
-  ReqVerify.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    keyId = map?["keyId"];
-    if (map?["message"] != null) message = base64.decode(map?["message"]);
-    if (map?["signature"] != null) signature = base64.decode(map?["signature"]);
+  ReqVerify.from(MethodCall call) : super(call.arguments["requestId"]) {
+    keyId = call.arguments["keyId"];
+    if (call.arguments["message"] != null) {
+      message = base64.decode(call.arguments["message"]);
+    }
+    if (call.arguments["signature"] != null) {
+      signature = base64.decode(call.arguments["signature"]);
+    }
   }
 }

@@ -22,6 +22,9 @@ class RspError extends Rsp {
         super(requestId);
 
   @override
-  Map<String, dynamic> toMap() =>
-      {"message": message, "stacktrace": stackTrace.toString()};
+  Map<String, dynamic> toMap() => {
+        "message": message,
+        "stacktrace": stackTrace.toString(),
+        "requestId": requestId
+      };
 }

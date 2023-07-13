@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import 'req.dart';
 
 class ReqInitialize extends Req {
@@ -15,10 +17,10 @@ class ReqInitialize extends Req {
       {this.publishingId, this.origin, this.id, this.dir, String? requestId})
       : super(requestId);
 
-  ReqInitialize.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    publishingId = map?['publishingId']!;
-    origin = map?['origin']!;
-    id = map?['id'];
-    dir = map?['dir'];
+  ReqInitialize.from(MethodCall call) : super(call.arguments["requestId"]) {
+    publishingId = call.arguments['publishingId'];
+    origin = call.arguments['origin'];
+    id = call.arguments['id'];
+    dir = call.arguments['dir'];
   }
 }

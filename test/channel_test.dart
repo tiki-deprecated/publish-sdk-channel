@@ -55,14 +55,14 @@ void main() {
         expect(rsp["address"], address);
       });
 
-      await channel.handler(MethodCall("com.mytiki.sdk.initialize", req));
+      await channel.handler(MethodCall("initialize", req));
     });
 
     test('no_handler', () async {
       Map req = mc_fixture.request();
       expect(
-          () async => await channel
-              .handler(MethodCall("com.mytiki.sdk.${const Uuid().v4()}", req)),
+          () async =>
+              await channel.handler(MethodCall("${const Uuid().v4()}", req)),
           throwsA(isA<TestFailure>()));
     });
   });

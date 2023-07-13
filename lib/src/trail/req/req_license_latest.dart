@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import '../../req.dart';
 
 class ReqLicenseLatest extends Req {
@@ -12,9 +14,9 @@ class ReqLicenseLatest extends Req {
   ReqLicenseLatest({this.ptr, this.origin, String? requestId})
       : super(requestId);
 
-  ReqLicenseLatest.fromJson(Map<String, dynamic>? map)
-      : super(map?["requestId"]) {
-    ptr = map?["ptr"];
-    origin = map?["origin"];
+  ReqLicenseLatest.fromJson(MethodCall call)
+      : super(call.arguments["requestId"]) {
+    ptr = call.arguments["ptr"];
+    origin = call.arguments["origin"];
   }
 }

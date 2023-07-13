@@ -4,7 +4,8 @@
  */
 
 import 'dart:convert';
-import 'dart:typed_data';
+
+import 'package:flutter/services.dart';
 
 import '../../req.dart';
 
@@ -14,8 +15,10 @@ class ReqSign extends Req {
 
   ReqSign({this.keyId, this.message, String? requestId}) : super(requestId);
 
-  ReqSign.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    keyId = map?["keyId"];
-    if (map?["message"] != null) message = base64.decode(map?["message"]);
+  ReqSign.from(MethodCall call) : super(call.arguments["requestId"]) {
+    keyId = call.arguments["keyId"];
+    if (call.arguments["message"] != null) {
+      message = base64.decode(call.arguments["message"]);
+    }
   }
 }

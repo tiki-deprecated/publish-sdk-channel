@@ -3,7 +3,7 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
-import 'dart:convert';
+import 'package:flutter/services.dart';
 
 import '../../req.dart';
 
@@ -12,7 +12,7 @@ class ReqLicenseGet extends Req {
 
   ReqLicenseGet({this.id, String? requestId}) : super(requestId);
 
-  ReqLicenseGet.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    id = map?["id"];
+  ReqLicenseGet.from(MethodCall call) : super(call.arguments["requestId"]) {
+    id = call.arguments["id"];
   }
 }

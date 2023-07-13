@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import '../../req.dart';
 
 class ReqReceiptGet extends Req {
@@ -10,7 +12,7 @@ class ReqReceiptGet extends Req {
 
   ReqReceiptGet({this.id, String? requestId}) : super(requestId);
 
-  ReqReceiptGet.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    id = map?["id"];
+  ReqReceiptGet.from(MethodCall call) : super(call.arguments["requestId"]) {
+    id = call.arguments["id"];
   }
 }

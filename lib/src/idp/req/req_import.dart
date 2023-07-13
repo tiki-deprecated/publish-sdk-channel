@@ -3,6 +3,8 @@
  *  MIT license. See LICENSE file in root directory.
  */
 
+import 'package:flutter/services.dart';
+
 import '../../req.dart';
 
 class ReqImport extends Req {
@@ -13,9 +15,9 @@ class ReqImport extends Req {
   ReqImport({this.keyId, this.key, this.public = false, String? requestId})
       : super(requestId);
 
-  ReqImport.from(Map<String, dynamic>? map) : super(map?["requestId"]) {
-    key = map?["key"];
-    keyId = map?["keyId"];
-    public = map?["public"];
+  ReqImport.from(MethodCall call) : super(call.arguments["requestId"]) {
+    key = call.arguments["key"];
+    keyId = call.arguments["keyId"];
+    public = call.arguments["public"];
   }
 }

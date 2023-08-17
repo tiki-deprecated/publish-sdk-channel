@@ -1,6 +1,6 @@
 name: tiki_sdk_native
 description: Use TIKI's dart libs in native projects
-version: 2.0.6
+version: 2.1.0
 homepage: https://mytiki.com
 documentation: https://mytiki.com/docs
 repository: https://github.com/tiki/tiki_sdk_native
@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
   flutter_secure_storage: ^8.0.0
   tiki_idp: ^0.1.1
-  tiki_trail: ^3.0.4
+  tiki_trail: ^3.1.0
   sqlite3: ^1.9.3
   sqlite3_flutter_libs: ^0.5.13
   pointycastle: ^3.7.3

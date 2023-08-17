@@ -16,6 +16,7 @@ class RspLicense extends Rsp {
   final String? terms;
   final String? description;
   final int? expiry;
+  final int? timestamp;
 
   RspLicense(
       {this.id,
@@ -24,6 +25,7 @@ class RspLicense extends Rsp {
       this.terms,
       this.description,
       this.expiry,
+      this.timestamp,
       String? requestId})
       : super(requestId);
 
@@ -34,6 +36,7 @@ class RspLicense extends Rsp {
         expiry = license?.expiry?.millisecondsSinceEpoch,
         title = RspTitle.from(license?.title),
         uses = license?.uses.map((use) => RspLicenseUse.from(use)).toList(),
+        timestamp = license?.timestamp?.millisecondsSinceEpoch,
         super(requestId);
 
   @override
@@ -44,6 +47,7 @@ class RspLicense extends Rsp {
         "terms": terms,
         "description": description,
         "expiry": expiry,
+        "timestmap": timestamp,
         "requestId": requestId
       };
 }

@@ -16,6 +16,7 @@ class RspPayable extends Rsp {
   final String? description;
   final int? expiry;
   final String? reference;
+  final int? timestamp;
 
   RspPayable(
       {this.id,
@@ -25,6 +26,7 @@ class RspPayable extends Rsp {
       this.description,
       this.expiry,
       this.reference,
+      this.timestamp,
       String? requestId})
       : super(requestId);
 
@@ -36,6 +38,7 @@ class RspPayable extends Rsp {
         amount = payable?.amount,
         type = payable?.type,
         reference = payable?.reference,
+        timestamp = payable?.timestamp?.millisecondsSinceEpoch,
         super(requestId);
 
   @override
@@ -47,6 +50,7 @@ class RspPayable extends Rsp {
         "amount": amount,
         "type": type,
         "reference": reference,
+        "timestamp": timestamp,
         "requestId": requestId
       };
 }

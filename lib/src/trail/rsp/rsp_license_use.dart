@@ -8,8 +8,8 @@ import 'package:tiki_trail/cache/license/license_use.dart';
 import '../../rsp.dart';
 
 class RspLicenseUse extends Rsp {
-  List<String>? usecases;
-  List<String>? destinations;
+  final List<String>? usecases;
+  final List<String>? destinations;
 
   RspLicenseUse(this.usecases, {this.destinations, String? requestId})
       : super(requestId);

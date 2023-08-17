@@ -628,10 +628,10 @@ packages:
     dependency: "direct main"
     description:
       name: tiki_trail
-      sha256: ea6c28cc20b6a4bcebd078f3257427a7af5626d5cc674d6564871961c7488226
+      sha256: "5111b6cc6d57d545d64717caabe3d0021cbb61a9c6d055a00c1e2cb1cf0b50d2"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.4"
+    version: "3.1.0"
   timing:
     dependency: transitive
     description:

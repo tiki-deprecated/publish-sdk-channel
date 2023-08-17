@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
   flutter_secure_storage: ^8.0.0
   tiki_idp: ^0.1.1
-  tiki_trail: ^3.0.4
+  tiki_trail: ^3.1.0
   sqlite3: ^1.9.3
   sqlite3_flutter_libs: ^0.5.13
   pointycastle: ^3.7.3

@@ -9,11 +9,12 @@ import 'package:tiki_trail/title_record.dart';
 import '../../rsp.dart';
 
 class RspTitle extends Rsp {
-  String? id;
-  String? hashedPtr;
-  String? origin;
-  List<String>? tags;
-  String? description;
+  final String? id;
+  final String? hashedPtr;
+  final String? origin;
+  final List<String>? tags;
+  final String? description;
+  final int? timestamp;
 
   RspTitle(
       {this.id,
@@ -21,6 +22,7 @@ class RspTitle extends Rsp {
       this.tags,
       this.origin,
       this.description,
+      this.timestamp,
       String? requestId})
       : super(requestId);
 
@@ -30,6 +32,7 @@ class RspTitle extends Rsp {
         origin = title?.origin,
         tags = title?.tags.map((tag) => tag.value).toList(),
         description = title?.description,
+        timestamp = title?.timestamp?.millisecondsSinceEpoch,
         super(requestId);
 
   @override
@@ -39,6 +42,7 @@ class RspTitle extends Rsp {
         "origin": origin,
         "tags": tags,
         "description": description,
+        "timestamp": timestamp,
         "requestId": requestId
       };
 }

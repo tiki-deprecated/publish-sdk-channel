@@ -9,11 +9,12 @@ import '../../rsp.dart';
 import 'rsp_payable.dart';
 
 class RspReceipt extends Rsp {
-  String? id;
-  RspPayable? payable;
-  String? amount;
-  String? description;
-  String? reference;
+  final String? id;
+  final RspPayable? payable;
+  final String? amount;
+  final String? description;
+  final String? reference;
+  final int? timestamp;
 
   RspReceipt(
       {this.id,
@@ -21,6 +22,7 @@ class RspReceipt extends Rsp {
       this.amount,
       this.description,
       this.reference,
+      this.timestamp,
       String? requestId})
       : super(requestId);
 
@@ -30,6 +32,7 @@ class RspReceipt extends Rsp {
         description = receipt?.description,
         amount = receipt?.amount,
         reference = receipt?.reference,
+        timestamp = receipt?.timestamp?.millisecondsSinceEpoch,
         super(requestId);
 
   @override
@@ -39,6 +42,7 @@ class RspReceipt extends Rsp {
         "description": description,
         "amount": amount,
         "reference": reference,
+        "timestamp": timestamp,
         "requestId": requestId
       };
 }

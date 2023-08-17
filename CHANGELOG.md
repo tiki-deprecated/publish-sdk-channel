@@ -1,3 +1,7 @@
+## 2.1.0
+* update API to support tiki_trail v3.1
+* add timestamp to record responses
+
 ## 2.0.0
 * update API to support tiki_trail v3.x
 * add support for tiki_idp
